@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Área de Trabalho Filial • Colormaq</title>
+<meta name="description" content="Central pública da Área de Trabalho Filial — todos os painéis e repositórios da operação em um único link, acessíveis a qualquer pessoa.">
+<link rel="icon" type="image/png" href="assets/logo-colormaq-blue.png">
+<style>
+  :root {
+    --navy: #12263F;
+    --navy-2: #1B3A5C;
+    --blue: #1D6FD1;
+    --blue-soft: #EAF2FC;
+    --line: #D7E4F4;
+    --bg: #F2F6FB;
+    --card: #FFFFFF;
+    --text: #1C2B3A;
+    --muted: #5A7184;
+    --green: #1E7A4E;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(18, 38, 63, .06), 0 8px 24px rgba(18, 38, 63, .08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Cabeçalho ---------- */
+  .topbar {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    border-bottom: 4px solid #BFE0FF;
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+  .brand-logo { height: 52px; width: auto; }
+  .brand-text { flex: 1; min-width: 0; }
+  .brand-text h1 {
+    margin: 0;
+    font-size: clamp(20px, 3.2vw, 28px);
+    letter-spacing: .2px;
+  }
+  .brand-text p { margin: 2px 0 0; color: #BFE0FF; font-size: 14px; }
+  .github-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 999px;
+    padding: 8px 14px;
+    white-space: nowrap;
+    transition: background .15s ease;
+  }
+  .github-link:hover { background: rgba(255, 255, 255, .12); }
+
+  /* ---------- Cartão de compartilhamento ---------- */
+  .share-card {
+    background: linear-gradient(135deg, var(--navy) 0%, #24486F 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px 26px;
+    margin: 30px 0 34px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px 26px;
+  }
+  .share-info { flex: 1 1 320px; }
+  .share-info h2 { margin: 0 0 4px; font-size: 19px; }
+  .share-info p { margin: 0; color: #D7E4F4; font-size: 14px; }
+  .share-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; flex: 1 1 360px; }
+  .share-url {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: #fff;
+    word-break: break-all;
+    flex: 1 1 auto;
+  }
+  .btn-copy, .btn-share {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .12s ease, background .15s ease;
+  }
+  .btn-copy { background: #fff; color: var(--navy); }
+  .btn-copy:hover { background: #EAF2FC; }
+  .btn-copy:active { transform: scale(.97); }
+  .btn-share { background: #1D6FD1; color: #fff; }
+  .btn-share:hover { background: #175FB4; }
+
+  /* ---------- Seção / grade ---------- */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 0 0 14px;
+  }
+  .section-head h2 { margin: 0; font-size: 20px; }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(18,38,63,.08), 0 16px 34px rgba(18,38,63,.13); }
+  .card-top { display: flex; align-items: center; gap: 14px; }
+  .icon {
+    flex: none;
+    width: 54px; height: 54px;
+    display: grid;
+    place-items: center;
+    font-size: 27px;
+    background: var(--blue-soft);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+  }
+  .card-top h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+  .card-top .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  .badge {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .badge.live  { background: #E4F5EC; color: var(--green); }
+  .badge.plain { background: #EDF0F4; color: var(--muted); }
+  .badge.here  { background: #FCF0DE; color: #9A6B0F; }
+
+  .desc { margin: 0; font-size: 13.5px; color: var(--muted); flex: 1; }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+  .date { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 10px;
+    padding: 8px 13px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-primary:hover { background: var(--navy-2); }
+  .btn-ghost { background: #fff; color: var(--navy); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--navy); }
+
+  .note { margin: 18px 2px 0; font-size: 12.5px; color: var(--muted); }
+  .offline-note { display: none; margin: 14px 2px 0; font-size: 12.5px; color: #9A6B0F; }
+
+  /* ---------- Rodapé ---------- */
+  footer {
+    margin-top: 46px;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding: 28px 20px 34px;
+    text-align: center;
+  }
+  .footer-logo { height: 34px; margin-bottom: 10px; }
+  footer p { margin: 4px 0; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  .loading { color: var(--muted); font-size: 14px; padding: 12px 2px; }
+
+  @media (max-width: 560px) {
+    .topbar-inner { flex-wrap: wrap; }
+    .github-link { order: 3; }
+    .brand-logo { height: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <img src="assets/logo-colormaq-white.png" alt="Logo Colormaq" class="brand-logo">
+    <div class="brand-text">
+      <h1>Área de Trabalho Filial</h1>
+      <p>Todos os painéis e repositórios da operação em um único link</p>
+    </div>
+    <a class="github-link" href="https://github.com/willianssilva-hash?tab=repositories" target="_blank" rel="noopener">Ver no GitHub ↗</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="share-card" aria-label="Compartilhar o link de acesso">
+    <div class="share-info">
+      <h2>🔗 Compartilhe este link</h2>
+      <p>Qualquer pessoa com o link visualiza <strong>todos os painéis e repositórios</strong> — sem login e sem cadastro.</p>
+    </div>
+    <div class="share-actions">
+      <span class="share-url" id="share-url">https://willianssilva-hash.github.io/-rea-de-Trabalho-Filial/</span>
+      <button class="btn-copy" id="copy-btn" type="button">Copiar link</button>
+      <button class="btn-share" id="native-share-btn" type="button" hidden>Compartilhar</button>
+    </div>
+  </section>
+
+  <section aria-label="Painéis e repositórios">
+    <div class="section-head">
+      <h2>Painéis e repositórios</h2>
+      <span class="muted" id="repo-count"></span>
+    </div>
+    <div id="grid" class="grid" aria-live="polite">
+      <div class="loading">Carregando repositórios…</div>
+    </div>
+    <p class="offline-note" id="offline-note">⚠️ Não foi possível consultar o GitHub agora — exibindo a lista salva na página.</p>
+    <p class="note">A lista é atualizada automaticamente a partir do GitHub: repositórios públicos novos aparecem sozinhos aqui.</p>
+  </section>
+
+</main>
+
+<footer>
+  <img src="assets/logo-colormaq-blue.png" alt="Logo Colormaq" class="footer-logo">
+  <p><strong>Área de Trabalho Filial</strong> — central pública de painéis da operação.</p>
+  <p>Acesso livre: compartilhe o link com qualquer pessoa da equipe. <a href="https://github.com/willianssilva-hash?tab=repositories" target="_blank" rel="noopener">Todos os repositórios no GitHub ↗</a></p>
+  <p>© <span id="year"></span> Colormaq</p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var OWNER = 'willianssilva-hash';
+  var HUB_REPO = '-rea-de-Trabalho-Filial';
+  var SHARE_URL = 'https://' + OWNER + '.github.io/' + HUB_REPO + '/';
+  var API_URL = 'https://api.github.com/users/' + OWNER + '/repos?per_page=100&sort=updated';
+  var CACHE_KEY = 'atf-repos-cache-v1';
+  var CACHE_TTL = 5 * 60 * 1000; // 5 minutos
+
+  /* Informações amigáveis dos repositórios conhecidos.
+     Usadas como enriquecimento dos dados da API e como
+     lista reserva caso a consulta ao GitHub falhe. */
+  var KNOWN = [
+    { name: HUB_REPO,                    display: 'Área de Trabalho Filial',           icon: '🏠', desc: 'Central pública com todos os painéis e repositórios da operação — esta página.' },
+    { name: 'Cockpit',                   display: 'Cockpit Diário',                    icon: '🚛', desc: 'Painel diário da frota e dos motoristas — filial (BA) e matriz (SP).' },
+    { name: 'Monitoramento2',            display: 'Torre de Controle — Monitoramento', icon: '📡', desc: 'Monitoramento das planilhas filial e matriz: entregas, ocorrências, devoluções e mapa.' },
+    { name: 'Controle-de-carregamentos', display: 'Controle de Carregamentos',         icon: '📦', desc: 'Controle dos carregamentos da matriz (ARU) e da filial (FSA).' },
+    { name: 'Daily-Capta-o',             display: 'Daily Captação',                    icon: '📅', desc: 'Programação e fechamento diário.' },
+    { name: 'CONTROLERPA',               display: 'CONTROLERPA',                       icon: '🗂️', desc: 'Repositório de controle ERP.' }
+  ];
+  var KNOWN_BY_NAME = {};
+  KNOWN.forEach(function (k) { KNOWN_BY_NAME[k.name] = k; });
+
+  function pagesUrl(name) { return 'https://' + OWNER + '.github.io/' + name + '/'; }
+  function repoUrl(name)  { return 'https://github.com/' + OWNER + '/' + name; }
+
+  var dateFmt;
+  try { dateFmt = new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  catch (e) { dateFmt = null; }
+  function formatDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return dateFmt ? 'Atualizado em ' + dateFmt.format(d) : 'Atualizado em ' + d.toISOString().slice(0, 10);
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* ---------- Carregamento (API + cache + reserva) ---------- */
+  function readCache() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (!data || !data.repos || !data.at || Date.now() - data.at > CACHE_TTL) return null;
+      return data.repos;
+    } catch (e) { return null; }
+  }
+  function writeCache(repos) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), repos: repos })); } catch (e) {}
+  }
+
+  function fetchRepos() {
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 7000) : null;
+    return fetch(API_URL, { headers: { 'Accept': 'application/vnd.github+json' }, signal: controller ? controller.signal : undefined })
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      });
+  }
+
+  function normalize(apiList) {
+    return apiList.map(function (r) {
+      var known = KNOWN_BY_NAME[r.name] || {};
+      return {
+        name: r.name,
+        display: known.display || r.name,
+        desc: known.desc || r.description || '',
+        icon: known.icon || '📊',
+        hasPages: !!r.has_pages && r.name !== HUB_REPO,
+        isHub: r.name === HUB_REPO,
+        pushedAt: r.pushed_at || null
+      };
+    });
+  }
+
+  function fallbackList() {
+    return KNOWN.map(function (k) {
+      return {
+        name: k.name,
+        display: k.display,
+        desc: k.desc,
+        icon: k.icon,
+        hasPages: k.name !== HUB_REPO && k.name !== 'CONTROLERPA',
+        isHub: k.name === HUB_REPO,
+        pushedAt: null
+      };
+    });
+  }
+
+  function sortRepos(list) {
+    var weight = function (r) {
+      if (r.isHub) return 0;            // central primeiro
+      if (r.hasPages) return 1;         // painéis publicados em seguida
+      return 2;                         // demais repositórios
+    };
+    return list.slice().sort(function (a, b) {
+      var wa = weight(a), wb = weight(b);
+      if (wa !== wb) return wa - wb;
+      var ta = a.pushedAt ? Date.parse(a.pushedAt) : 0;
+      var tb = b.pushedAt ? Date.parse(b.pushedAt) : 0;
+      return tb - ta; // mais recentes primeiro
+    });
+  }
+
+  /* ---------- Renderização ---------- */
+  function cardHtml(r) {
+    var badge;
+    if (r.isHub) {
+      badge = '<span class="badge here">Você está aqui</span>';
+    } else if (r.hasPages) {
+      badge = '<span class="badge live">● Painel publicado</span>';
+    } else {
+      badge = '<span class="badge plain">Repositório</span>';
+    }
+
+    var openBtn = (r.hasPages && !r.isHub)
+      ? '<a class="btn btn-primary" href="' + esc(pagesUrl(r.name)) + '" target="_blank" rel="noopener">Abrir painel →</a>'
+      : '';
+
+    return '' +
+      '<article class="card">' +
+        '<div class="card-top">' +
+          '<span class="icon" aria-hidden="true">' + r.icon + '</span>' +
+          '<div>' +
+            '<h3>' + esc(r.display) + '</h3>' +
+            '<div class="sub">' + esc(r.name) + '</div>' +
+            badge +
+          '</div>' +
+        '</div>' +
+        '<p class="desc">' + esc(r.desc || 'Repositório público de ' + OWNER + '.') + '</p>' +
+        '<div class="card-foot">' +
+          '<span class="date">' + esc(formatDate(r.pushedAt)) + '</span>' +
+          '<div class="btns">' +
+            openBtn +
+            '<a class="btn btn-ghost" href="' + esc(repoUrl(r.name)) + '" target="_blank" rel="noopener">&lt;/&gt; Repositório</a>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function render(repos) {
+    var grid = document.getElementById('grid');
+    var sorted = sortRepos(repos);
+    grid.innerHTML = sorted.map(cardHtml).join('');
+    document.getElementById('repo-count').textContent =
+      sorted.length + (sorted.length === 1 ? ' repositório público' : ' repositórios públicos');
+  }
+
+  /* ---------- Boot ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var cached = readCache();
+  if (cached) render(cached);
+
+  fetchRepos()
+    .then(function (apiList) {
+      var repos = normalize(Array.isArray(apiList) ? apiList : []);
+      if (!repos.length) throw new Error('lista vazia');
+      writeCache(repos);
+      render(repos);
+    })
+    .catch(function () {
+      if (!cached) {
+        render(fallbackList());
+        document.getElementById('offline-note').style.display = 'block';
+      }
+    });
+
+  /* ---------- Compartilhar ---------- */
+  var copyBtn = document.getElementById('copy-btn');
+  copyBtn.addEventListener('click', function () {
+    var done = function () {
+      copyBtn.textContent = '✓ Copiado!';
+      setTimeout(function () { copyBtn.textContent = 'Copiar link'; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(SHARE_URL).then(done, function () { legacyCopy(done); });
+    } else {
+      legacyCopy(done);
+    }
+  });
+  function legacyCopy(done) {
+    var ta = document.createElement('textarea');
+    ta.value = SHARE_URL;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  var shareBtn = document.getElementById('native-share-btn');
+  if (navigator.share) {
+    shareBtn.hidden = false;
+    shareBtn.addEventListener('click', function () {
+      navigator.share({
+        title: 'Área de Trabalho Filial',
+        text: 'Todos os painéis e repositórios da operação em um único link:',
+        url: SHARE_URL
+      }).catch(function () {});
+    });
+  }
+})();
+</script>
+</body>
+</html>
