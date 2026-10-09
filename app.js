@@ -186,6 +186,20 @@
     const favoriteLabel = repository.favorite
       ? `Remover ${name} dos favoritos`
       : `Adicionar ${name} aos favoritos`;
+    const escapedId = escapeHTML(repository.id);
+    const moveOptions = SECTORS
+      .filter((sector) => sector !== repository.sector)
+      .map((sector) => `<button class="repo-action-item" type="button" data-move-id="${escapedId}" data-move-sector="${escapeHTML(sector)}">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M4 10h8M4 14h6"/><path d="m13 12 3 3 3-3"/></svg>
+        <span>${escapeHTML(sector)}</span>
+      </button>`)
+      .join("");
+    const removeAction = repository.builtIn
+      ? '<p class="repo-protected-note">O painel padrão é mantido na área de trabalho.</p>'
+      : `<button class="repo-action-item repo-remove-item" type="button" data-remove-id="${escapedId}">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13M8 5.5V3.8h4v1.7M6 7.5l.6 9h6.8l.6-9M8.5 8.5v5.5m3-5.5v5.5"/></svg>
+          <span>Remover repositório</span>
+        </button>`;
 
     return `
       <article class="repo-card">
@@ -193,9 +207,20 @@
           <div class="repo-icon" data-tone="${tone}">${iconForRepository(repository, tone)}</div>
           <div class="repo-card-actions">
             <span class="repo-type">${escapeHTML(platform.label)}</span>
-            <button class="favorite-button${repository.favorite ? " is-favorite" : ""}" type="button" data-favorite-id="${escapeHTML(repository.id)}" aria-label="${favoriteLabel}" aria-pressed="${Boolean(repository.favorite)}">
+            <button class="favorite-button${repository.favorite ? " is-favorite" : ""}" type="button" data-favorite-id="${escapedId}" aria-label="${favoriteLabel}" aria-pressed="${Boolean(repository.favorite)}">
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.5 2.3 4.66 5.14.75-3.72 3.62.88 5.12L10 14.23l-4.6 2.42.88-5.12-3.72-3.62 5.14-.75L10 2.5Z"/></svg>
             </button>
+            <details class="repo-actions-menu">
+              <summary class="repo-actions-trigger" aria-label="Opções para ${name}" title="Opções do repositório">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="4" r="1"/><circle cx="10" cy="10" r="1"/><circle cx="10" cy="16" r="1"/></svg>
+              </summary>
+              <div class="repo-actions-panel">
+                <span class="repo-menu-heading">Mover para</span>
+                ${moveOptions}
+                <div class="repo-menu-divider"></div>
+                ${removeAction}
+              </div>
+            </details>
           </div>
         </div>
         <h3 title="${name}">${name}</h3>
@@ -220,7 +245,7 @@
     const headingId = `sector-title-${sectorIndex}`;
     const escapedSector = escapeHTML(sector);
     const cards = sectorRepositories.length
-      ? `<div class="repo-grid" aria-label="Repositórios do setor ${escapedSector}">${sectorRepositories.map((repository) => createCard(repository, repositories.indexOf(repository))).join("")}</div>`
+      ? `<div class="repo-grid" role="group" aria-label="Repositórios do setor ${escapedSector}">${sectorRepositories.map((repository) => createCard(repository, repositories.indexOf(repository))).join("")}</div>`
       : `<div class="sector-empty">
           <span class="sector-empty-icon" aria-hidden="true">+</span>
           <span>Nenhum repositório neste setor ainda.</span>
@@ -407,6 +432,36 @@
       openDialog(addButton.dataset.addSector);
       return;
     }
+    const moveButton = event.target.closest("[data-move-id]");
+    if (moveButton) {
+      const repository = repositories.find((item) => item.id === moveButton.dataset.moveId);
+      const destination = moveButton.dataset.moveSector;
+      if (!repository || !SECTORS.includes(destination) || repository.sector === destination) return;
+      const previousSector = repository.sector;
+      repository.sector = destination;
+      const saved = saveRepositories();
+      if (!saved) repository.sector = previousSector;
+      render();
+      showToast(saved ? `${repository.name} movido para ${destination}.` : "Não foi possível salvar a mudança de setor.");
+      return;
+    }
+    const removeButton = event.target.closest("[data-remove-id]");
+    if (removeButton) {
+      const repository = repositories.find((item) => item.id === removeButton.dataset.removeId);
+      if (!repository) return;
+      if (repository.builtIn) {
+        showToast("O Painel de Monitoramento padrão não pode ser removido.");
+        return;
+      }
+      if (!window.confirm(`Deseja remover “${repository.name}” da área de trabalho?`)) return;
+      const previousRepositories = repositories;
+      repositories = repositories.filter((item) => item.id !== repository.id);
+      const saved = saveRepositories();
+      if (!saved) repositories = previousRepositories;
+      render();
+      showToast(saved ? `${repository.name} foi removido da área de trabalho.` : "Não foi possível salvar a remoção.");
+      return;
+    }
     const button = event.target.closest("[data-favorite-id]");
     if (!button) return;
     const repository = repositories.find((item) => item.id === button.dataset.favoriteId);
@@ -425,6 +480,16 @@
     document.querySelector("#repository-title").scrollIntoView({ behavior: "smooth", block: "start" });
   });
   elements.search.addEventListener("input", render);
+  document.querySelectorAll(".sector-nav a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (activeFilter !== "all" || elements.search.value.trim()) {
+        event.preventDefault();
+        elements.search.value = "";
+        setFilter("all");
+        window.setTimeout(() => document.querySelector(link.hash)?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+      }
+    });
+  });
 
   ["#add-repo-button", "#sidebar-add", "#empty-add-button"].forEach((selector) => {
     document.querySelector(selector).addEventListener("click", openDialog);

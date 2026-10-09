@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#eef5fd" />
+    <meta name="theme-color" content="#f3f8ff" />
     <meta
       name="description"
-      content="Área de Trabalho Filial Colormaq: acesse o Painel de Monitoramento e seus demais repositórios em um só lugar."
+      content="Área de Trabalho Filial Colormaq: acesse e organize os painéis e repositórios da filial."
     />
     <title>Área de Trabalho Filial · Colormaq</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -15,7 +15,7 @@
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Navegação principal">
-        <a class="brand" href="#inicio" aria-label="Colormaq — Área de Trabalho Filial, início">
+        <a class="brand" href="#inicio" aria-label="Colormaq — Área de Trabalho Filial">
           <img
             class="brand-logo"
             src="https://colormaq.vtexassets.com/assets/vtex.file-manager-graphql/images/489e43ad-014d-4513-bf71-06aeca05fa86___0ba9e527781bb1d4317a2897013f8bd1.png"
@@ -25,24 +25,18 @@
           <span class="brand-copy"><small>ÁREA DE TRABALHO FILIAL</small></span>
         </a>
 
-        <div class="workspace-switcher">
-          <span class="workspace-avatar" aria-hidden="true">CF</span>
-          <span class="workspace-copy">
-            <small>UNIDADE ATUAL</small>
-            <strong>ÁREA DE TRABALHO FILIAL</strong>
-          </span>
-          <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="m6 8 4 4 4-4" />
-          </svg>
+        <div class="sidebar-workspace">
+          <span class="workspace-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></span>
+          <span><small>ESPAÇO DE TRABALHO</small><strong>Unidade Filial</strong></span>
         </div>
 
-        <p class="nav-label">ÁREA DE TRABALHO FILIAL</p>
+        <p class="nav-label">MENU PRINCIPAL</p>
         <nav class="side-nav">
-          <a class="nav-item" href="#inicio" aria-label="Visão geral">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+          <a class="nav-item active" href="#inicio" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7v9.5a1 1 0 0 1-1 1h-5.2v-6h-4.6v6H4.5a1 1 0 0 1-1-1V10Z"/></svg>
             <span>Visão geral</span>
           </a>
-          <a class="nav-item active" href="#repositorios" aria-current="page" aria-label="Repositórios">
+          <a class="nav-item" href="#repositorios">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.75A1.75 1.75 0 0 1 6.75 3H20v15H6.75A1.75 1.75 0 0 0 5 19.75v-15Z"/><path d="M5 19.75A1.75 1.75 0 0 1 6.75 18H20M8.5 7h8M8.5 10.5h8"/></svg>
             <span>Repositórios</span>
             <span class="nav-count" id="sidebar-count">1</span>
@@ -53,89 +47,136 @@
           </button>
         </nav>
 
-        <div class="sidebar-bottom">
+        <p class="nav-label sector-nav-label">NAVEGAR POR SETOR</p>
+        <nav class="sector-nav" aria-label="Navegar pelos setores">
+          <a href="#sector-title-0"><i class="sector-dot capture"></i><span>Captação</span></a>
+          <a href="#sector-title-1"><i class="sector-dot monitor"></i><span>Monitoramento</span></a>
+          <a href="#sector-title-2"><i class="sector-dot release"></i><span>Liberação</span></a>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-tip">
           <div class="sidebar-tip-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 3.5a6.5 6.5 0 0 0-4.2 11.46c.84.72 1.2 1.5 1.2 2.54h6c0-1.04.36-1.82 1.2-2.54A6.5 6.5 0 0 0 12 3.5Z"/><path d="M9.5 20.5h5M10 17.5h4"/></svg>
           </div>
-          <strong>Sua filial, do seu jeito</strong>
-          <p>Reúna seus painéis e tenha tudo a um clique.</p>
+          <strong>Tudo em um só lugar</strong>
+          <p>Organize seus acessos e ganhe tempo no dia a dia.</p>
           <button type="button" class="sidebar-help" id="sidebar-add">Adicionar repositório <span aria-hidden="true">↗</span></button>
         </div>
 
         <div class="sidebar-profile">
-          <div class="profile-avatar" aria-hidden="true">CF</div>
+          <div class="profile-avatar" aria-hidden="true">C</div>
           <div class="profile-copy"><strong>Colormaq</strong><small>Unidade filial</small></div>
-          <span class="profile-dots" aria-hidden="true">···</span>
+          <span class="profile-status" aria-label="Área de trabalho ativa"></span>
         </div>
       </aside>
 
       <main class="main-content" id="inicio">
         <header class="topbar">
           <div class="breadcrumbs" aria-label="Localização">
-            <span>Área de Trabalho Filial</span>
+            <span>COLORMAQ</span>
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-            <strong>Repositórios</strong>
+            <strong>Área de Trabalho</strong>
           </div>
           <div class="topbar-actions">
             <label class="search-box" for="search-input">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
-              <input id="search-input" type="search" placeholder="Buscar repositórios" autocomplete="off" />
+              <input id="search-input" type="search" placeholder="Pesquisar repositórios..." autocomplete="off" />
               <kbd>/</kbd>
             </label>
-            <button class="avatar-button" type="button" aria-label="Perfil Colormaq">CF</button>
+            <span class="topbar-divider" aria-hidden="true"></span>
+            <span class="unit-badge"><span class="unit-badge-dot"></span> Unidade Filial</span>
           </div>
         </header>
 
         <div class="page-content" id="repositorios">
-          <section class="page-heading" aria-labelledby="page-title">
-            <div>
-              <div class="eyebrow"><span class="eyebrow-dot"></span> COLORMAQ · UNIDADE FILIAL</div>
+          <section class="hero-banner" aria-labelledby="page-title">
+            <div class="hero-copy">
+              <div class="eyebrow"><span class="eyebrow-dot"></span> COLORMAQ <span class="eyebrow-separator">/</span> UNIDADE FILIAL</div>
               <h1 id="page-title">ÁREA DE TRABALHO FILIAL</h1>
-              <p class="page-subtitle">Seus painéis e repositórios da filial, reunidos em um só lugar.</p>
+              <p>Bem-vindo ao seu espaço de trabalho.<br />Acesse painéis e sistemas organizados por setor.</p>
+              <a href="#repository-title" class="hero-link">Explorar repositórios <span aria-hidden="true">↘</span></a>
             </div>
-            <button class="primary-button" id="add-repo-button" type="button">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>
-              <span>Adicionar repositório</span>
-            </button>
-          </section>
-
-          <section class="welcome-banner" aria-label="Acesso rápido">
-            <div class="banner-copy">
-              <span class="banner-kicker"><span class="pulse-dot"></span> SEU HUB DE ACESSO</span>
-              <h2>Menos procura.<br /><span>Mais tempo para fazer.</span></h2>
-              <p>Abra seus repositórios e aplicações publicados direto desta área de trabalho.</p>
-              <a href="#repo-grid" class="banner-link">Ver meus repositórios <span aria-hidden="true">↓</span></a>
+            <div class="hero-visual" aria-hidden="true">
+              <svg viewBox="0 0 520 250" role="presentation">
+                <defs>
+                  <linearGradient id="hero-surface" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffffff" />
+                    <stop offset="1" stop-color="#e8f4ff" />
+                  </linearGradient>
+                  <linearGradient id="hero-bar" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#58a5e5" />
+                    <stop offset="1" stop-color="#1971c6" />
+                  </linearGradient>
+                </defs>
+                <circle cx="366" cy="125" r="119" fill="#d7ebff" opacity=".7" />
+                <circle cx="366" cy="125" r="92" fill="none" stroke="#b4d8f7" stroke-width="1.5" stroke-dasharray="5 7" />
+                <path d="M58 216h410" stroke="#b5d4ef" stroke-width="3" stroke-linecap="round" />
+                <rect x="100" y="30" width="324" height="176" rx="15" fill="#d6e8f8" opacity=".7" transform="rotate(-3 100 30)" />
+                <g transform="rotate(-3 262 118)">
+                  <rect x="103" y="27" width="324" height="176" rx="14" fill="url(#hero-surface)" stroke="#78afe0" stroke-width="3" />
+                  <rect x="117" y="41" width="296" height="146" rx="8" fill="#f7fbff" />
+                  <rect x="128" y="53" width="74" height="122" rx="6" fill="#eaf4fd" />
+                  <rect x="140" y="65" width="48" height="6" rx="3" fill="#8ebbe2" />
+                  <rect x="140" y="81" width="40" height="5" rx="2.5" fill="#c4ddef" />
+                  <rect x="140" y="94" width="45" height="5" rx="2.5" fill="#c4ddef" />
+                  <rect x="140" y="107" width="35" height="5" rx="2.5" fill="#c4ddef" />
+                  <rect x="140" y="134" width="48" height="26" rx="5" fill="#d9edff" />
+                  <path d="m146 153 10-9 8 5 12-12" fill="none" stroke="#287fca" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="214" y="53" width="186" height="53" rx="7" fill="#fff" stroke="#e3eef8" />
+                  <rect x="225" y="64" width="54" height="5" rx="2.5" fill="#c1d9ee" />
+                  <rect x="225" y="76" width="79" height="4" rx="2" fill="#e0ebf5" />
+                  <rect x="225" y="88" width="66" height="4" rx="2" fill="#e0ebf5" />
+                  <path d="M319 92c13-18 21-2 32-16 8-10 15-8 24-17" fill="none" stroke="#287fca" stroke-width="3" stroke-linecap="round" />
+                  <circle cx="320" cy="92" r="3" fill="#287fca" /><circle cx="351" cy="76" r="3" fill="#287fca" /><circle cx="375" cy="59" r="3" fill="#287fca" />
+                  <rect x="214" y="117" width="186" height="58" rx="7" fill="#fff" stroke="#e3eef8" />
+                  <path d="M225 162h162" stroke="#eaf1f7" />
+                  <rect x="231" y="144" width="13" height="18" rx="3" fill="#9bc8ed" />
+                  <rect x="252" y="133" width="13" height="29" rx="3" fill="#69a9df" />
+                  <rect x="273" y="138" width="13" height="24" rx="3" fill="#9bc8ed" />
+                  <rect x="294" y="126" width="13" height="36" rx="3" fill="url(#hero-bar)" />
+                  <rect x="315" y="135" width="13" height="27" rx="3" fill="#69a9df" />
+                  <rect x="336" y="121" width="13" height="41" rx="3" fill="url(#hero-bar)" />
+                  <rect x="357" y="130" width="13" height="32" rx="3" fill="#9bc8ed" />
+                </g>
+                <rect x="394" y="164" width="82" height="48" rx="11" fill="#fff" stroke="#d2e6f7" stroke-width="2" />
+                <circle cx="415" cy="188" r="11" fill="#e5f2ff" />
+                <path d="M410 188h10m-5-5v10" stroke="#287fca" stroke-width="2" stroke-linecap="round" />
+                <rect x="433" y="181" width="29" height="5" rx="2.5" fill="#b4d4ef" />
+                <rect x="433" y="191" width="21" height="4" rx="2" fill="#d7e8f7" />
+                <circle cx="89" cy="64" r="5" fill="#4d9cda" />
+                <circle cx="449" cy="51" r="4" fill="#77b9ed" />
+                <path d="m456 93 3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z" fill="#78b9e9" />
+              </svg>
             </div>
-            <div class="banner-art" aria-hidden="true">
-              <div class="art-orbit orbit-one"></div>
-              <div class="art-orbit orbit-two"></div>
-              <div class="art-window">
-                <div class="art-window-top"><i></i><i></i><i></i><span>filial · colormaq</span></div>
-                <div class="art-window-body">
-                  <div class="art-side-line"></div>
-                  <div class="art-main-lines"><b></b><b></b><b></b></div>
-                  <div class="art-mini-card"><span class="art-chart"><i></i><i></i><i></i><i></i><i></i></span><small>PROJETO</small></div>
-                </div>
-              </div>
-              <div class="art-floating-icon"><svg viewBox="0 0 24 24"><path d="m7 17 10-10M8 7h9v9"/></svg></div>
-              <span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✦</span>
-            </div>
+            <div class="hero-stamp" aria-hidden="true"><span>CF</span><i></i></div>
           </section>
 
           <section class="repository-section" aria-labelledby="repository-title">
             <div class="section-heading">
-              <div>
-                <div class="section-title-row">
-                  <h2 id="repository-title">Painéis e repositórios</h2>
-                  <span class="section-count" id="repo-count">1</span>
+              <div class="section-title-block">
+                <div class="section-heading-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.3"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.3"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.3"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.3"/></svg>
                 </div>
-                <p>Acesso direto aos sistemas utilizados pela filial.</p>
+                <div>
+                  <div class="section-title-row">
+                    <h2 id="repository-title">Repositórios por setor</h2>
+                    <span class="section-count" id="repo-count">01</span>
+                  </div>
+                  <p>Escolha um acesso para abrir os painéis da filial.</p>
+                </div>
               </div>
-              <div class="view-controls" aria-label="Filtrar repositórios">
-                <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todos</button>
-                <button class="filter-button" type="button" data-filter="favorites" aria-pressed="false">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.5 2.3 4.66 5.14.75-3.72 3.62.88 5.12L10 14.23l-4.6 2.42.88-5.12-3.72-3.62 5.14-.75L10 2.5Z"/></svg>
-                  Favoritos
+              <div class="section-tools">
+                <div class="view-controls" aria-label="Filtrar repositórios">
+                  <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+                  <button class="filter-button" type="button" data-filter="favorites" aria-pressed="false">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.5 2.3 4.66 5.14.75-3.72 3.62.88 5.12L10 14.23l-4.6 2.42.88-5.12-3.72-3.62 5.14-.75L10 2.5Z"/></svg>
+                    Favoritos
+                  </button>
+                </div>
+                <button class="primary-button" id="add-repo-button" type="button">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>
+                  <span>Adicionar repositório</span>
                 </button>
               </div>
             </div>
@@ -150,8 +191,9 @@
           </section>
 
           <footer class="page-footer">
-            <span><span class="footer-dot"></span> Área de Trabalho Filial pronta para novos painéis</span>
-            <span>Os repositórios adicionados são salvos neste navegador.</span>
+            <div class="footer-insight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6 16V9m4 7V5m4 11v-4m4 4V7"/><path d="m5 7 5-3 4 4 5-3"/></svg></div>
+            <span><strong>Seu trabalho, organizado.</strong> Acesse seus sistemas com mais agilidade.</span>
+            <small>COLORMAQ <i></i> UNIDADE FILIAL</small>
           </footer>
         </div>
       </main>
