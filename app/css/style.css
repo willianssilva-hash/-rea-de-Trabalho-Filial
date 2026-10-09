@@ -63,11 +63,10 @@ body{
   transition:transform .12s ease, box-shadow .12s ease;
 }
 .btn-refresh:hover{transform:translateY(-1px);box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
-.demo-flag{
-  background:var(--warn-bg);color:var(--warn);
-  padding:8px 28px;font-size:12.5px;text-align:center;border-top:1px solid #F0D9AE;
-}
-.demo-flag code{background:#fff;border:1px solid #EAD3A6;border-radius:4px;padding:1px 5px}
+.source-flag{padding:8px 28px;font-size:12.5px;text-align:center}
+.source-flag.warn{background:var(--warn-bg);color:var(--warn);border-top:1px solid #F0D9AE}
+.source-flag.info{background:var(--azul-050);color:var(--azul-800);border-top:1px solid var(--azul-100)}
+.source-flag code{background:#fff;border:1px solid var(--borda);border-radius:4px;padding:1px 5px}
 
 /* ------------------------------- página ------------------------------ */
 .page{max-width:1440px;margin:0 auto;padding:26px 28px 40px}
@@ -80,7 +79,7 @@ body{
 .section-sub{color:var(--tinta-suave);font-size:12.5px}
 
 /* -------------------------------- KPIs ------------------------------- */
-.kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .kpi{
   background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio);
   padding:14px 16px 13px;box-shadow:var(--sombra);position:relative;overflow:hidden;
@@ -191,6 +190,21 @@ body{
   border-top:2px solid var(--azul-100);font-variant-numeric:tabular-nums;
 }
 
+/* --------------------------- tabela árvore --------------------------- */
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.tree{min-width:640px}
+.tree td{padding:7px 12px}
+.tree .tr-status td:nth-child(2){padding-left:26px;color:var(--tinta-suave)}
+.tree .tr-status td:nth-child(3){padding-left:42px}
+.cell-local{color:var(--azul-800);letter-spacing:.03em}
+.tr-cat td{background:var(--azul-050);border-top:1px solid var(--azul-100)}
+.tr-local td{background:var(--azul-100);border-top:1px solid var(--azul-300);color:var(--azul-900)}
+.tr-grand td{background:var(--azul-800);color:#fff;font-weight:700;border-top:2px solid var(--azul-900)}
+.tr-group td{background:var(--azul-800);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:8px 12px}
+.tr-group td span{font-weight:500;text-transform:none;letter-spacing:0;color:var(--azul-100)}
+.status-pill{display:inline-flex;align-items:center;gap:7px;background:var(--azul-050);border:1px solid var(--azul-100);border-radius:999px;padding:3px 11px;font-size:11.5px;font-weight:600;color:var(--azul-900);white-space:nowrap}
+.status-pill i{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+
 /* ------------------------------- rodapé ------------------------------ */
 .page-footer{
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
@@ -202,7 +216,7 @@ body{
 
 /* ----------------------------- responsivo ---------------------------- */
 @media (max-width:1200px){
-  .kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

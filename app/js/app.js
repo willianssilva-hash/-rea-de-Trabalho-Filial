@@ -1,9 +1,9 @@
 /* ==========================================================================
    COCKPIT DIÁRIO · Colormaq — Área de Trabalho Filial
-   Painel de acompanhamento intra-dia da operação de entregas e coletas.
-   Fontes de dados (JSON espelhando as abas da planilha):
-     data/cockpit_diario.json   <- aba "Cockpit Diário"
-     data/rotina_diaria.json    <- aba "Rotina Diária Mot. Frota2"
+   Painel de frota: contagem de veículos por local × categoria × status
+   (aba "Cockpit Diário" · COCKPIT RESUMO DIÁRIO GERAL) e acompanhamento
+   diário de motoristas (aba "Rotina Diária Mot. Frota2").
+   Fontes: data/cockpit_diario.json e data/rotina_diaria.json
    ========================================================================== */
 (function () {
   "use strict";
@@ -12,40 +12,57 @@
   const $ = (sel) => document.querySelector(sel);
   const nf0 = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 0 });
   const nf1 = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const nf2 = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const num = (v) => nf0.format(v || 0);
-  const pct = (v, d) => (d === 2 ? nf2.format(v || 0) : nf1.format(v || 0)) + "%";
-  const brl = (v) => "R$ " + nf2.format(v || 0);
+  const pct = (v) => nf1.format(v || 0) + "%";
   const pctOf = (a, b) => (b ? (a / b) * 100 : 0);
-  const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
   const DIAS = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+  const dataBR = (iso) => { const [y, m, d] = iso.split("-").map(Number); return `${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y}`; };
+  const diaSemana = (iso) => { const [y, m, d] = iso.split("-").map(Number); return DIAS[new Date(y, m - 1, d).getDay()]; };
+  const horaBR = (iso) => (iso || "").split("T")[1]?.slice(0, 5) || "—";
+  const sigla = (local) => (local.includes("BA") ? "BA" : local.includes("SP") ? "SP" : local);
 
-  function dataBR(iso) {
-    if (!iso) return "—";
-    const [y, m, d] = iso.split("-").map(Number);
-    return String(d).padStart(2, "0") + "/" + String(m).padStart(2, "0") + "/" + y;
-  }
-  function dataCurta(iso) {
-    const [y, m, d] = iso.split("-").map(Number);
-    return String(d).padStart(2, "0") + "/" + String(m).padStart(2, "0");
-  }
-  function diaSemana(iso) {
-    const [y, m, d] = iso.split("-").map(Number);
-    return DIAS[new Date(y, m - 1, d).getDay()];
-  }
-  function horaBR(iso) {
-    if (!iso) return "—";
-    const t = iso.split("T")[1] || "";
-    return t.slice(0, 5);
-  }
-
-  /* --------------------------- cores do tema ---------------------------- */
+  /* --------------------------- tema & status ---------------------------- */
   const COR = {
     azul900: "#052E5C", azul800: "#063B78", azul700: "#08468D", azul600: "#0A4FA0",
     azul500: "#1669C4", azul300: "#7FB0E4", azul100: "#DCE9F8", azul050: "#EEF5FC",
     cinza: "#B9CDE4", ok: "#128A5A", warn: "#D98A00", risk: "#C6362B",
     grade: "#E3ECF6", texto: "#5A7184",
   };
+
+  /* status da planilha -> grupo de leitura do cockpit */
+  const GRUPO = {
+    "Carregado": "Carregado",
+    "Em Viagem": "Em trânsito",
+    "Retorno": "Em trânsito",
+    "Vazio": "Vazio / reposição",
+    "Ag. Desc. Cliente": "Aguard. desc. cliente",
+    "Aguard. Descarga Cliente": "Aguard. desc. cliente",
+    "Manutenção": "Indisponível",
+    "MEC": "Indisponível",
+    "Sinistro Batida": "Indisponível",
+    "Inativo": "Indisponível",
+    "Fluxo CD": "Interno / CD",
+    "Manobra": "Interno / CD",
+    "Interno": "Interno / CD",
+    "Disponível": "Disponível",
+    "Sem contagem": "Sem contagem",
+    "Não informado": "Não informado",
+  };
+  const ORDEM_GRUPO = ["Carregado", "Em trânsito", "Vazio / reposição", "Aguard. desc. cliente",
+    "Interno / CD", "Indisponível", "Disponível", "Sem contagem", "Não informado"];
+  const COR_GRUPO = {
+    "Carregado": COR.azul600, "Em trânsito": COR.azul500, "Vazio / reposição": COR.azul300,
+    "Aguard. desc. cliente": "#7C4DBC", "Interno / CD": "#6E86A8", "Indisponível": COR.risk,
+    "Disponível": COR.ok, "Sem contagem": "#D9E2EC", "Não informado": COR.cinza,
+  };
+  const COR_STATUS = {
+    "Carregado": COR.azul600, "Em Viagem": COR.ok, "Retorno": COR.warn, "Vazio": COR.azul300,
+    "Ag. Desc. Cliente": "#7C4DBC", "Aguard. Descarga Cliente": "#7C4DBC",
+    "Manutenção": COR.risk, "MEC": "#8D6E63", "Sinistro Batida": "#8E1B12", "Inativo": "#8A97A5",
+    "Fluxo CD": "#B39DDB", "Manobra": "#90A4AE", "Interno": "#9FA8DA", "Disponível": COR.ok,
+    "Sem contagem": "#D9E2EC", "Não informado": COR.cinza,
+  };
+  const dot = (status) => `<i class="dot" style="background:${COR_STATUS[status] || COR.cinza}"></i>`;
 
   Chart.defaults.font.family = '"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif';
   Chart.defaults.font.size = 11.5;
@@ -56,53 +73,25 @@
   Chart.defaults.plugins.tooltip.backgroundColor = "rgba(5,46,92,.94)";
   Chart.defaults.plugins.tooltip.padding = 10;
   Chart.defaults.plugins.tooltip.cornerRadius = 8;
-  Chart.defaults.plugins.tooltip.titleFont = { weight: "700" };
 
   /* texto central nas rosquinhas */
-  const centroRosca = {
+  Chart.register({
     id: "centroRosca",
     afterDraw(chart, args, opts) {
       if (!opts || !opts.texto) return;
-      const { ctx } = chart;
       const meta = chart.getDatasetMeta(0);
       if (!meta.data.length) return;
       const { x, y } = meta.data[0];
+      const { ctx } = chart;
       ctx.save();
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.font = "700 22px 'Segoe UI', system-ui, sans-serif";
-      ctx.fillStyle = COR.azul900;
-      ctx.fillText(opts.texto, x, y - 7);
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.font = "700 24px 'Segoe UI', system-ui, sans-serif";
+      ctx.fillStyle = COR.azul900; ctx.fillText(opts.texto, x, y - 8);
       ctx.font = "600 10.5px 'Segoe UI', system-ui, sans-serif";
-      ctx.fillStyle = COR.texto;
-      ctx.fillText(opts.rotulo || "", x, y + 12);
+      ctx.fillStyle = COR.texto; ctx.fillText(opts.rotulo || "", x, y + 13);
       ctx.restore();
     },
-  };
-  /* linha de meta vertical (gráfico de barras horizontais) */
-  const linhaMeta = {
-    id: "linhaMeta",
-    afterDraw(chart, args, opts) {
-      if (!opts || opts.value == null) return;
-      const { ctx, chartArea, scales } = chart;
-      const x = scales.x.getPixelForValue(opts.value);
-      ctx.save();
-      ctx.strokeStyle = COR.risk;
-      ctx.setLineDash([5, 4]);
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      ctx.moveTo(x, chartArea.top);
-      ctx.lineTo(x, chartArea.bottom);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle = COR.risk;
-      ctx.font = "700 10px 'Segoe UI', system-ui, sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText("meta " + opts.value + "%", x + 4, chartArea.top + 9);
-      ctx.restore();
-    },
-  };
-  Chart.register(centroRosca, linhaMeta);
+  });
 
   /* ------------------------------ estado ------------------------------- */
   const estado = { cockpit: null, rotina: null, charts: {}, filtro: "todos", busca: "", sort: null };
@@ -117,78 +106,58 @@
     estado.rotina = r;
   }
 
+  /* --------------------------- agregações ------------------------------ */
+  function agregar() {
+    const res = estado.cockpit.resumo || [];
+    const locais = [], cats = [];
+    const porLocal = {}, porCat = {}, porGrupo = {}, porStatus = {};
+    let total = 0;
+    for (const r of res) {
+      if (!porLocal[r.local]) { porLocal[r.local] = {}; locais.push(r.local); }
+      const ck = r.categoria + " · " + sigla(r.local);
+      if (!porCat[ck]) { porCat[ck] = {}; cats.push(ck); }
+      const g = GRUPO[r.status] || "Sem contagem";
+      porLocal[r.local][g] = (porLocal[r.local][g] || 0) + r.quantidade;
+      porCat[ck][g] = (porCat[ck][g] || 0) + r.quantidade;
+      porGrupo[g] = (porGrupo[g] || 0) + r.quantidade;
+      porStatus[r.status] = (porStatus[r.status] || 0) + r.quantidade;
+      total += r.quantidade;
+    }
+    const motStatus = {}, motLocal = {};
+    for (const l of estado.rotina.linhas || []) {
+      motStatus[l.status] = (motStatus[l.status] || 0) + 1;
+      motLocal[l.local] = (motLocal[l.local] || 0) + 1;
+    }
+    return { res, locais, cats, porLocal, porCat, porGrupo, porStatus, total, motStatus, motLocal };
+  }
+
   /* ================================ KPIs ================================ */
-  function renderKPIs() {
-    const k = estado.cockpit.indicadores;
-    const m = estado.cockpit.meta;
-    const hist = estado.cockpit.historico || [];
-    const ontem = hist[hist.length - 1] || null;
-
-    const conc = pctOf(k.entregas_realizadas, k.entregas_previstas);
-    const curva = estado.cockpit.curva_horaria || { previsto_acumulado: [], realizado_acumulado: [] };
-    const ultIdx = curva.realizado_acumulado.reduce((acc, v, i) => (v == null ? acc : i), 0);
-    const esperadoHora = curva.previsto_acumulado[ultIdx] || k.entregas_previstas;
-    const disp = pctOf(k.veiculos_ativos + (k.veiculos_reserva || 0), k.veiculos_total);
-    const mediaDevol = hist.length ? hist.reduce((s, h) => s + h.devolucoes, 0) / hist.length : 0;
-
+  function renderKPIs(A) {
+    const g = (k) => A.porGrupo[k] || 0;
+    const transito = g("Em trânsito");
+    const indisp = g("Indisponível");
+    const informados = (estado.rotina.linhas || []).filter((l) => l.status !== "Não informado").length;
     const cards = [
-      {
-        rot: "Entregas realizadas", valor: num(k.entregas_realizadas),
-        compl: " de " + num(k.entregas_previstas) + " prev.",
-        barra: conc, tone: conc >= 90 ? "ok" : conc >= 75 ? "" : "warn",
-        foot: deltaHtml(ontem ? k.entregas_realizadas - ontem.entregas_realizadas : 0, " vs. dia anterior", true),
-      },
-      {
-        rot: "Conclusão do plano", valor: pct(conc),
-        barra: conc, tone: conc >= 95 ? "ok" : conc >= 80 ? "" : "warn",
-        foot: '<span>esperado p/ horário: <b>' + num(esperadoHora) + "</b> (" + pct(pctOf(esperadoHora, k.entregas_previstas)) + ")</span>",
-      },
-      {
-        rot: "OTD do dia", valor: pct(k.otd),
-        barra: k.otd, tone: k.otd >= m.otd ? "ok" : k.otd >= m.otd - 2 ? "warn" : "risk",
-        foot: deltaHtml(k.otd - m.otd, " vs. meta " + pct(m.otd), true, "p.p."),
-      },
-      {
-        rot: "SLA de entrega", valor: pct(k.sla),
-        barra: k.sla, tone: k.sla >= m.sla ? "ok" : k.sla >= m.sla - 2 ? "warn" : "risk",
-        foot: deltaHtml(k.sla - m.sla, " vs. meta " + pct(m.sla), true, "p.p."),
-      },
-      {
-        rot: "Coletas realizadas", valor: num(k.coletas_realizadas),
-        compl: " de " + num(k.coletas_previstas) + " prev.",
-        barra: pctOf(k.coletas_realizadas, k.coletas_previstas),
-        tone: pctOf(k.coletas_realizadas, k.coletas_previstas) >= 90 ? "ok" : "",
-        foot: "<span>" + pct(pctOf(k.coletas_realizadas, k.coletas_previstas)) + " do plano de coletas</span>",
-      },
-      {
-        rot: "Devoluções", valor: num(k.devolucoes),
-        compl: " · avarias " + num(k.avarias),
-        tone: k.devolucoes > m.devolucoes_max ? "risk" : k.devolucoes === m.devolucoes_max ? "warn" : "ok",
-        foot: "<span>limite do dia: <b>" + num(m.devolucoes_max) + "</b> · média hist. " + nf1.format(mediaDevol) + "</span>",
-      },
-      {
-        rot: "Ocorrências", valor: num(k.ocorrencias),
-        tone: k.ocorrencias > 4 ? "risk" : k.ocorrencias > 2 ? "warn" : "ok",
-        foot: "<span>avarias, atrasos e devoluções registradas em rota</span>",
-      },
-      {
-        rot: "Disponibilidade frota", valor: pct(disp),
-        barra: disp, tone: disp >= m.disponibilidade_frota ? "ok" : disp >= m.disponibilidade_frota - 5 ? "warn" : "risk",
-        foot: "<span>" + k.veiculos_ativos + " ativos · " + k.veiculos_manutencao + " manut. · " + k.veiculos_parados + " parado · " + (k.veiculos_reserva || 0) + " reserva</span>",
-      },
-      {
-        rot: "Custo por km", valor: brl(k.custo_km),
-        tone: k.custo_km <= m.custo_km ? "ok" : k.custo_km <= m.custo_km * 1.05 ? "warn" : "risk",
-        foot: deltaHtml(pctOf(k.custo_km - m.custo_km, m.custo_km), " vs. alvo " + brl(m.custo_km), false, "%"),
-      },
-      {
-        rot: "Km rodado / planejado", valor: num(k.km_rodado),
-        compl: " de " + num(k.km_planejado),
-        barra: pctOf(k.km_rodado, k.km_planejado), tone: "",
-        foot: "<span>horas extras: <b>" + nf1.format(k.horas_extras) + "h</b> · absenteísmo " + pct(k.absenteismo) + "</span>",
-      },
+      { rot: "Frota contada no dia", valor: num(A.total), compl: " veículos",
+        foot: `<span>${A.locais.map((l) => `${l} <b>${num(A.porLocal[l] && Object.values(A.porLocal[l]).reduce((s, v) => s + v, 0))}</b>`).join(" · ")}</span>` },
+      { rot: "Carregados", valor: num(g("Carregado")), compl: " · " + pct(pctOf(g("Carregado"), A.total)),
+        barra: pctOf(g("Carregado"), A.total), tone: "ok", foot: "<span>carregados / prontos para expedição</span>" },
+      { rot: "Em trânsito", valor: num(transito), compl: " · " + pct(pctOf(transito, A.total)),
+        barra: pctOf(transito, A.total), foot: `<span>em viagem <b>${num(A.porStatus["Em Viagem"] || 0)}</b> · retorno <b>${num(A.porStatus["Retorno"] || 0)}</b></span>` },
+      { rot: "Aguard. desc. cliente", valor: num(g("Aguard. desc. cliente")), compl: " · " + pct(pctOf(g("Aguard. desc. cliente"), A.total)),
+        barra: pctOf(g("Aguard. desc. cliente"), A.total), tone: g("Aguard. desc. cliente") / A.total > .15 ? "risk" : "warn",
+        foot: "<span>veículos parados no cliente</span>" },
+      { rot: "Vazios / reposição", valor: num(g("Vazio / reposição")), compl: " · " + pct(pctOf(g("Vazio / reposição"), A.total)),
+        barra: pctOf(g("Vazio / reposição"), A.total), foot: "<span>disponíveis para reposicionar</span>" },
+      { rot: "Indisponíveis", valor: num(indisp), compl: " · " + pct(pctOf(indisp, A.total)),
+        barra: pctOf(indisp, A.total), tone: indisp ? "risk" : "ok",
+        foot: `<span>manutenção <b>${num(A.porStatus["Manutenção"] || 0)}</b> · MEC <b>${num(A.porStatus["MEC"] || 0)}</b> · sinistro <b>${num(A.porStatus["Sinistro Batida"] || 0)}</b> · inativo <b>${num(A.porStatus["Inativo"] || 0)}</b></span>` },
+      { rot: "Fluxo CD / manobra", valor: num(g("Interno / CD")), compl: " · " + pct(pctOf(g("Interno / CD"), A.total)),
+        barra: pctOf(g("Interno / CD"), A.total), foot: "<span>movimentação interna / CD</span>" },
+      { rot: "Motoristas acompanhados", valor: num((estado.rotina.linhas || []).length),
+        compl: " · " + num(informados) + " c/ status",
+        foot: `<span>disponíveis <b>${num(A.motStatus["Disponível"] || 0)}</b> · internos <b>${num(A.motStatus["Interno"] || 0)}</b> · sem status <b>${num(A.motStatus["Não informado"] || 0)}</b></span>` },
     ];
-
     $("#kpi-grid").innerHTML = cards.map((c) => `
       <article class="kpi ${c.tone ? "tone-" + c.tone : ""}">
         <div class="kpi-label">${c.rot}</div>
@@ -198,391 +167,286 @@
       </article>`).join("");
   }
 
-  function deltaHtml(v, rotulo, maiorEMelhor, unid) {
-    unid = unid || "";
-    const cls = Math.abs(v) < 0.05 ? "flat" : (v > 0) === maiorEMelhor ? "up" : "down";
-    const seta = cls === "flat" ? "•" : v > 0 ? "▲" : "▼";
-    const val = unid === "p.p." ? nf1.format(Math.abs(v)) + " p.p." :
-                unid === "%" ? nf1.format(Math.abs(v)) + "%" : num(Math.abs(v));
-    return `<span class="kpi-delta ${cls}">${seta} ${val}</span><span>${rotulo}</span>`;
-  }
-
   /* ============================== gráficos ============================== */
-  function destruir(id) {
-    if (estado.charts[id]) { estado.charts[id].destroy(); delete estado.charts[id]; }
-  }
+  function destruir(id) { if (estado.charts[id]) { estado.charts[id].destroy(); delete estado.charts[id]; } }
+  const gruposPresentes = (A) => ORDEM_GRUPO.filter((gr) => (A.porGrupo[gr] || 0) > 0);
 
-  function renderCharts() {
-    const k = estado.cockpit.indicadores;
-    const m = estado.cockpit.meta;
-    const curva = estado.cockpit.curva_horaria;
-    const hist = estado.cockpit.historico;
+  function renderCharts(A) {
+    const grupos = gruposPresentes(A);
+    const ds = (mapFn) => grupos.map((gr) => ({
+      label: gr, data: mapFn(gr), backgroundColor: COR_GRUPO[gr],
+      borderColor: "#fff", borderWidth: 1, borderRadius: 3, barPercentage: .68,
+    }));
 
-    /* --- curva intra-dia --- */
-    destruir("curva");
-    estado.charts.curva = new Chart($("#chart-curva"), {
-      type: "line",
-      data: {
-        labels: curva.horas,
-        datasets: [
-          {
-            label: "Previsto (acum.)", data: curva.previsto_acumulado,
-            borderColor: COR.azul300, backgroundColor: COR.azul050,
-            borderDash: [6, 4], borderWidth: 2, pointRadius: 2.5, fill: true, tension: .3,
-          },
-          {
-            label: "Realizado (acum.)", data: curva.realizado_acumulado,
-            borderColor: COR.azul600, backgroundColor: "rgba(10,79,160,.14)",
-            borderWidth: 2.6, pointRadius: 3, pointBackgroundColor: COR.azul600, fill: true, tension: .3, spanGaps: false,
-          },
-        ],
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        interaction: { mode: "index", intersect: false },
-        scales: { y: { beginAtZero: true, grid: { color: COR.grade } }, x: { grid: { display: false } } },
-        plugins: { legend: { position: "top", align: "end" } },
-      },
-    });
-    const ult = curva.realizado_acumulado.filter((v) => v != null);
-    if (!ult.length || !curva.horas.length) {
-      $("#tag-curva").textContent = "curva intra-dia não informada";
-    } else {
-      const previstoHora = curva.previsto_acumulado[ult.length - 1];
-      const gap = previstoHora - ult[ult.length - 1];
-      $("#tag-curva").textContent = gap > 0 ? "déficit de " + num(gap) + " entregas no horário" : "à frente do plano";
-    }
-
-    /* --- status das entregas --- */
-    destruir("status");
-    const st = estado.cockpit.status_entregas;
-    estado.charts.status = new Chart($("#chart-status"), {
-      type: "doughnut",
-      data: {
-        labels: Object.keys(st),
-        datasets: [{
-          data: Object.values(st),
-          backgroundColor: [COR.azul600, COR.azul500, COR.cinza, COR.warn, COR.risk],
-          borderColor: "#fff", borderWidth: 2, hoverOffset: 6,
-        }],
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false, cutout: "64%",
-        plugins: {
-          legend: { position: "bottom" },
-          centroRosca: { texto: num(k.entregas_previstas), rotulo: "entregas no dia" },
-          tooltip: {
-            callbacks: {
-              label: (c) => " " + c.label + ": " + num(c.parsed) + " (" + pct(pctOf(c.parsed, k.entregas_previstas)) + ")",
-            },
-          },
-        },
-      },
-    });
-
-    /* --- OTD histórico × meta --- */
-    destruir("otd");
-    estado.charts.otd = new Chart($("#chart-otd"), {
-      type: "line",
-      data: {
-        labels: hist.map((h) => dataCurta(h.data)),
-        datasets: [
-          {
-            label: "OTD realizado", data: hist.map((h) => h.otd),
-            borderColor: COR.azul600, backgroundColor: COR.azul600,
-            borderWidth: 2.4, pointRadius: 3.5, tension: .3, fill: false,
-            pointBackgroundColor: hist.map((h) => (h.otd >= m.otd ? COR.ok : COR.risk)),
-          },
-          {
-            label: "Meta " + pct(m.otd), data: hist.map(() => m.otd),
-            borderColor: COR.risk, borderDash: [6, 4], borderWidth: 1.6, pointRadius: 0, fill: false,
-          },
-        ],
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        scales: { y: { suggestedMin: 85, suggestedMax: 100, ticks: { callback: (v) => v + "%" }, grid: { color: COR.grade } }, x: { grid: { display: false } } },
-        plugins: { legend: { position: "top", align: "end" } },
-      },
-    });
-    const abaixo = hist.filter((h) => h.otd < m.otd).length;
-    $("#tag-otd").textContent = abaixo + " de " + hist.length + " dias abaixo da meta";
-
-    /* --- frota --- */
-    destruir("frota");
-    estado.charts.frota = new Chart($("#chart-frota"), {
-      type: "doughnut",
-      data: {
-        labels: ["Em operação", "Reserva", "Manutenção", "Parados"],
-        datasets: [{
-          data: [k.veiculos_ativos, k.veiculos_reserva || 0, k.veiculos_manutencao, k.veiculos_parados],
-          backgroundColor: [COR.azul600, COR.azul300, COR.warn, COR.risk],
-          borderColor: "#fff", borderWidth: 2, hoverOffset: 6,
-        }],
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false, cutout: "64%",
-        plugins: {
-          legend: { position: "bottom" },
-          centroRosca: { texto: pct(pctOf(k.veiculos_ativos + (k.veiculos_reserva || 0), k.veiculos_total)), rotulo: "disponibilidade" },
-        },
-      },
-    });
-
-    /* --- conclusão por motorista --- */
-    destruir("mot");
-    const linhas = estado.rotina.linhas
-      .filter((l) => l.entregas_previstas > 0)
-      .map((l) => ({ nome: l.motorista, p: pctOf(l.entregas_realizadas, l.entregas_previstas), st: l.status }))
-      .sort((a, b) => b.p - a.p);
-    estado.charts.mot = new Chart($("#chart-motoristas"), {
+    /* --- status por local (barras empilhadas horizontais) --- */
+    destruir("locais");
+    estado.charts.locais = new Chart($("#chart-locais"), {
       type: "bar",
-      data: {
-        labels: linhas.map((l) => l.nome),
-        datasets: [{
-          label: "% conclusão da rota",
-          data: linhas.map((l) => +l.p.toFixed(1)),
-          backgroundColor: linhas.map((l) =>
-            l.st !== "Concluído" && l.st !== "Em rota" ? COR.cinza :
-            l.p >= 95 ? COR.azul600 : l.p >= 80 ? COR.azul300 : l.p >= 70 ? COR.warn : COR.risk),
-          borderRadius: 5, barPercentage: .72,
-        }],
-      },
+      data: { labels: A.locais, datasets: ds((gr) => A.locais.map((l) => A.porLocal[l][gr] || 0)) },
       options: {
         indexAxis: "y", responsive: true, maintainAspectRatio: false,
-        scales: {
-          x: { beginAtZero: true, max: 100, ticks: { callback: (v) => v + "%" }, grid: { color: COR.grade } },
-          y: { grid: { display: false } },
-        },
+        scales: { x: { stacked: true, beginAtZero: true, grid: { color: COR.grade } }, y: { stacked: true, grid: { display: false } } },
+        plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${num(c.parsed.x)} veículos` } } },
+      },
+    });
+    $("#tag-locais").textContent = A.locais.map((l) => `${sigla(l)} ${num(Object.values(A.porLocal[l]).reduce((s, v) => s + v, 0))}`).join(" × ");
+
+    /* --- distribuição geral --- */
+    destruir("grupos");
+    const gruposRosca = grupos.filter((gr) => gr !== "Sem contagem");
+    estado.charts.grupos = new Chart($("#chart-grupos"), {
+      type: "doughnut",
+      data: {
+        labels: gruposRosca,
+        datasets: [{ data: gruposRosca.map((gr) => A.porGrupo[gr]), backgroundColor: gruposRosca.map((gr) => COR_GRUPO[gr]), borderColor: "#fff", borderWidth: 2, hoverOffset: 6 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: "62%",
         plugins: {
-          legend: { display: false },
-          linhaMeta: { value: 95 },
-          tooltip: { callbacks: { label: (c) => " conclusão: " + pct(c.parsed.x) } },
+          legend: { position: "bottom" },
+          centroRosca: { texto: num(A.total), rotulo: "veículos" },
+          tooltip: { callbacks: { label: (c) => ` ${c.label}: ${num(c.parsed)} (${pct(pctOf(c.parsed, A.total))})` } },
         },
       },
     });
 
-    /* --- devoluções × ocorrências --- */
-    destruir("dev");
-    estado.charts.dev = new Chart($("#chart-devol"), {
+    /* --- categorias × status --- */
+    destruir("cats");
+    estado.charts.cats = new Chart($("#chart-categorias"), {
       type: "bar",
-      data: {
-        labels: hist.map((h) => dataCurta(h.data)),
-        datasets: [
-          { label: "Devoluções", data: hist.map((h) => h.devolucoes), backgroundColor: COR.warn, borderRadius: 4 },
-          { label: "Ocorrências", data: hist.map((h) => h.ocorrencias), backgroundColor: COR.azul500, borderRadius: 4 },
-        ],
-      },
+      data: { labels: A.cats, datasets: ds((gr) => A.cats.map((ck) => A.porCat[ck][gr] || 0)) },
       options: {
         responsive: true, maintainAspectRatio: false,
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: COR.grade } }, x: { grid: { display: false } } },
-        plugins: { legend: { position: "top", align: "end" } },
+        scales: { x: { stacked: true, grid: { display: false }, ticks: { maxRotation: 38, minRotation: 38 } }, y: { stacked: true, beginAtZero: true, grid: { color: COR.grade } } },
+        plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${num(c.parsed.y)} veículos` } } },
       },
     });
+    const maiorCat = A.cats.slice().sort((a, b) =>
+      Object.values(A.porCat[b]).reduce((s, v) => s + v, 0) - Object.values(A.porCat[a]).reduce((s, v) => s + v, 0))[0];
+    $("#tag-cats").textContent = "maior: " + maiorCat;
+
+    /* --- motoristas por status --- */
+    destruir("mot");
+    const mst = Object.entries(A.motStatus).sort((a, b) => b[1] - a[1]);
+    estado.charts.mot = new Chart($("#chart-motoristas"), {
+      type: "doughnut",
+      data: {
+        labels: mst.map((m) => m[0]),
+        datasets: [{ data: mst.map((m) => m[1]), backgroundColor: mst.map((m) => COR_STATUS[m[0]] || COR.cinza), borderColor: "#fff", borderWidth: 2, hoverOffset: 6 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: "62%",
+        plugins: {
+          legend: { position: "bottom" },
+          centroRosca: { texto: num((estado.rotina.linhas || []).length), rotulo: "motoristas" },
+          tooltip: { callbacks: { label: (c) => ` ${c.label}: ${num(c.parsed)} motoristas` } },
+        },
+      },
+    });
+    $("#tag-mot").textContent = Object.keys(A.motLocal).length + " locais";
   }
 
   /* ============================== insights ============================== */
-  function renderInsights() {
-    const k = estado.cockpit.indicadores;
-    const m = estado.cockpit.meta;
-    const hist = estado.cockpit.historico;
-    const linhas = estado.rotina.linhas;
-    const ativas = linhas.filter((l) => l.entregas_previstas > 0);
-    const conc = pctOf(k.entregas_realizadas, k.entregas_previstas);
+  function renderInsights(A) {
+    const g = (k) => A.porGrupo[k] || 0;
+    const t = A.total;
     const cards = [];
+    const porLocalStatus = (st) => A.locais.map((l) => ({ l, q: (A.res.filter((r) => r.local === l && r.status === st).reduce((s, r) => s + r.quantidade, 0)) })).filter((x) => x.q > 0);
+    const porCatStatus = (st) => {
+      const m = {};
+      A.res.filter((r) => r.status === st).forEach((r) => { const k = r.categoria + " · " + sigla(r.local); m[k] = (m[k] || 0) + r.quantidade; });
+      return Object.entries(m).sort((a, b) => b[1] - a[1]);
+    };
 
-    /* resumo executivo */
-    const melhor = ativas.slice().sort((a, b) =>
-      pctOf(b.entregas_realizadas, b.entregas_previstas) - pctOf(a.entregas_realizadas, a.entregas_previstas))[0];
+    const d = diaSemana(estado.cockpit.meta.data_referencia);
     $("#insight-summary").innerHTML =
-      `<strong>${diaSemana(m.data_referencia)[0].toUpperCase() + diaSemana(m.data_referencia).slice(1)}, ${dataBR(m.data_referencia)}</strong> · ` +
-      `${num(k.entregas_realizadas)} de ${num(k.entregas_previstas)} entregas concluídas (<strong>${pct(conc)}</strong> do plano) · ` +
-      `OTD <strong>${pct(k.otd)}</strong> (meta ${pct(m.otd)}) · ${k.veiculos_ativos} de ${k.veiculos_total} veículos em operação · ` +
-      `${num(k.ocorrencias)} ocorrências em rota. Melhor desempenho do dia: <strong>${melhor.motorista}</strong> (${melhor.rota}).`;
+      `<strong>${d[0].toUpperCase() + d.slice(1)}, ${dataBR(estado.cockpit.meta.data_referencia)}</strong> · ` +
+      `<strong>${num(t)} veículos</strong> contados (${A.locais.map((l) => `${sigla(l)} ${num(Object.values(A.porLocal[l]).reduce((s, v) => s + v, 0))}`).join(" · ")}) · ` +
+      `carregados <strong>${pct(pctOf(g("Carregado"), t))}</strong> · em trânsito <strong>${pct(pctOf(g("Em trânsito"), t))}</strong> · ` +
+      `aguardando descarga no cliente <strong>${pct(pctOf(g("Aguard. desc. cliente"), t))}</strong> · indisponíveis <strong>${pct(pctOf(g("Indisponível"), t))}</strong> · ` +
+      `${num((estado.rotina.linhas || []).length)} motoristas acompanhados.`;
 
-    /* 1 · projeção de fechamento do dia */
-    const curva = estado.cockpit.curva_horaria || { horas: [], realizado_acumulado: [], previsto_acumulado: [] };
-    const reais = curva.realizado_acumulado.filter((v) => v != null);
-    if (reais.length >= 3) {
-    const ultIdx = reais.length - 1;
-    const ultVal = reais[ultIdx];
-    const ritmo = ultIdx >= 3 ? (ultVal - reais[ultIdx - 3]) / 3 : ultVal / (ultIdx + 1);
-    const horasRest = Math.max(1, (curva.realizado_acumulado.length - 1 - ultIdx));
-    const proj = ultVal + ritmo * horasRest;
-    const ritmoNec = horasRest > 0 ? (k.entregas_previstas - ultVal) / horasRest : 0;
-    cards.push({
-      tipo: proj >= k.entregas_previstas ? "destaque" : "acao",
-      ico: proj >= k.entregas_previstas ? "🎯" : "⏱",
-      titulo: "Projeção de fechamento",
-      texto: `Mantido o ritmo das últimas horas (<b>${nf1.format(ritmo)} entregas/h</b>), o dia fecha em <b>${num(Math.round(proj))} entregas (${pct(pctOf(proj, k.entregas_previstas))} do plano)</b>. ` +
-             `Para cumprir 100% são necessárias <b>${nf1.format(ritmoNec)} entregas/h</b> até ${curva.horas[curva.horas.length - 1]} ` +
-             `(${pctOf(ritmoNec - ritmo, ritmo) > 0 ? "+" : ""}${nf1.format(pctOf(ritmoNec - ritmo, ritmo))}% sobre o ritmo atual).`,
-    });
-    }
-
-    /* 2 · OTD vs meta */
-    const abaixo = hist.filter((h) => h.otd < m.otd).length;
-    const seq = (() => { let s = 0; for (let i = hist.length - 1; i >= 0; i--) { if (hist[i].otd < m.otd) s++; else break; } return s; })();
-    cards.push({
-      tipo: k.otd >= m.otd ? "destaque" : "alerta",
-      ico: k.otd >= m.otd ? "✅" : "⚠️",
-      titulo: "OTD " + (k.otd >= m.otd ? "dentro da meta" : "abaixo da meta"),
-      texto: `OTD do dia em <b>${pct(k.otd)}</b> contra meta de ${pct(m.otd)} (${nf1.format(k.otd - m.otd)} p.p.). ` +
-             `Nos últimos ${hist.length} dias de operação, <b>${abaixo} ficaram abaixo da meta</b>${seq > 1 ? `, sendo <b>${seq} dias consecutivos</b> — padrão que pede ação estrutural` : ""}. ` +
-             `SLA acompanha em <b>${pct(k.sla)}</b> (meta ${pct(m.sla)}).`,
-    });
-
-    /* 3 · rotas em risco */
-    const risco = ativas.filter((l) => l.status === "Em rota" && pctOf(l.entregas_realizadas, l.entregas_previstas) < 78)
-      .sort((a, b) => pctOf(a.entregas_realizadas, a.entregas_previstas) - pctOf(b.entregas_realizadas, b.entregas_previstas));
-    if (risco.length) {
+    /* 1 · fila no cliente */
+    const ag = g("Aguard. desc. cliente");
+    if (ag) {
+      const top = porCatStatus("Ag. Desc. Cliente")[0];
       cards.push({
-        tipo: "alerta", ico: "🚨", titulo: risco.length + " rotas em risco de não concluir",
-        texto: risco.map((l) => `<b>${l.motorista}</b> (${l.rota}) com ${pct(pctOf(l.entregas_realizadas, l.entregas_previstas))} concluído`).join(" · ") +
-               `. Somam <b>${num(risco.reduce((s, l) => s + (l.entregas_previstas - l.entregas_realizadas), 0))} entregas abertas</b> — priorizar apoio ou remanejo de carga.`,
+        tipo: "alerta", ico: "⏳", titulo: ag + " veículos parados em descarga no cliente",
+        texto: `<b>${pct(pctOf(ag, t))} da frota</b> aguardando liberação no cliente (${porLocalStatus("Ag. Desc. Cliente").map((x) => `${sigla(x.l)} ${num(x.q)}`).join(" × ")}). ` +
+               `Maior concentração: <b>${top[0]} (${num(top[1])})</b>. Cada dia parado aqui equivale a ~1 viagem a menos por veículo — priorizar negociação de janelas de descarga.`,
       });
     }
 
-    /* 4 · destaque positivo */
-    const tops = ativas.filter((l) => l.status === "Concluído" && l.ocorrencias === 0 &&
-      pctOf(l.entregas_realizadas, l.entregas_previstas) >= 99);
-    if (tops.length) {
+    /* 2 · indisponíveis */
+    const ind = g("Indisponível");
+    if (ind) {
       cards.push({
-        tipo: "destaque", ico: "🏆", titulo: "Rotas modelo do dia",
-        texto: `<b>${tops.map((t) => t.motorista).join("</b>, <b>")}</b> concluíram 100% das entregas e coletas sem nenhuma ocorrência. ` +
-               `Prática recomendada como referência de roteiro e checklist de saída.`,
+        tipo: "alerta", ico: "🔧", titulo: ind + " veículos indisponíveis (" + pct(pctOf(ind, t)) + ")",
+        texto: `Manutenção <b>${num(A.porStatus["Manutenção"] || 0)}</b> (${porCatStatus("Manutenção").map(([k, v]) => `${k} ${num(v)}`).join(", ")}), ` +
+               `MEC <b>${num(A.porStatus["MEC"] || 0)}</b>, sinistro batida <b>${num(A.porStatus["Sinistro Batida"] || 0)}</b> e inativo <b>${num(A.porStatus["Inativo"] || 0)}</b>. ` +
+               `Revisar previsão de liberação da oficina e avaliar substituição por agregados.`,
       });
     }
 
-    /* 5 · frota indisponível */
-    const indisp = linhas.filter((l) => l.status === "Manutenção" || l.status === "Parado");
-    if (indisp.length) {
-      const mediaPorVeic = k.entregas_previstas / Math.max(1, k.veiculos_ativos);
+    /* 3 · vazios */
+    const vz = g("Vazio / reposição");
+    if (vz) {
+      const top = porCatStatus("Vazio")[0];
       cards.push({
-        tipo: "acao", ico: "🔧", titulo: "Capacidade perdida por frota parada",
-        texto: `<b>${indisp.length} veículos</b> fora de operação (${indisp.map((i) => i.placa).join(", ")}) retiraram da rota cerca de ` +
-               `<b>${num(Math.round(mediaPorVeic * indisp.length))} entregas/dia</b> (${pct(pctOf(indisp.length, k.veiculos_total))} da capacidade). ` +
-               `O veículo reserva (${(linhas.find((l) => l.status === "Reserva") || {}).placa || "—"}) cobre parte do gap; ` +
-               `previsão de retorno: ${indisp.map((i) => (i.observacao.match(/\(([^)]*)\)/) || [])[1]).filter(Boolean).join("; ") || "não informada"}.`,
+        tipo: "acao", ico: "🔄", titulo: vz + " veículos vazios para reposicionar",
+        texto: `<b>${pct(pctOf(vz, t))} da frota</b> vazia (${porLocalStatus("Vazio").map((x) => `${sigla(x.l)} ${num(x.q)}`).join(" × ")}); ` +
+               `maior bolsa em <b>${top ? top[0] + " (" + num(top[1]) + ")" : "—"}</b>. Cruzar com cargas pendentes de expedição para reduzir km vazio.`,
       });
     }
 
-    /* 6 · devoluções */
-    const mediaDev = hist.length ? hist.reduce((s, h) => s + h.devolucoes, 0) / hist.length : 0;
+    /* 4 · carregados */
+    const cg = g("Carregado");
+    if (cg) {
+      const top = porCatStatus("Carregado")[0];
+      cards.push({
+        tipo: "destaque", ico: "🚛", titulo: cg + " veículos carregados prontos (" + pct(pctOf(cg, t)) + ")",
+        texto: `Destaque para <b>${top[0]} (${num(top[1])})</b>. Garantir motoristas e janelas de saída para converter essa carteira em viagens ainda hoje.`,
+      });
+    }
+
+    /* 5 · em trânsito */
+    const tr = g("Em trânsito");
+    if (tr) {
+      cards.push({
+        tipo: "tendencia", ico: "🛣", titulo: tr + " veículos em trânsito (viagem/retorno)",
+        texto: `<b>${num(A.porStatus["Em Viagem"] || 0)}</b> em viagem e <b>${num(A.porStatus["Retorno"] || 0)}</b> em retorno (${pct(pctOf(tr, t))} da frota). ` +
+               `Volume que define a capacidade de descarga/recebimento do próximo dia.`,
+      });
+    }
+
+    /* 6 · operação interna */
+    const interno = g("Interno / CD");
+    if (interno) {
+      cards.push({
+        tipo: "tendencia", ico: "🏭", titulo: interno + " veículos em movimentação interna",
+        texto: `Fluxo CD <b>${num(A.porStatus["Fluxo CD"] || 0)}</b> e manobra <b>${num(A.porStatus["Manobra"] || 0)}</b>, somados a ` +
+               `<b>${num(A.motStatus["Interno"] || 0)} motoristas em atividade interna</b> (FÁB. FILIAL - BA). Frente interna pesada hoje — verificar se há ociosidade convertível em viagem.`,
+      });
+    }
+
+    /* 7 · motoristas sem status */
+    const sem = A.motStatus["Não informado"] || 0;
+    if (sem) {
+      cards.push({
+        tipo: "acao", ico: "📝", titulo: sem + " motoristas sem status informado",
+        texto: `Todos da <b>MATRIZ-SP</b> aparecem sem status na contagem de 09/10, enquanto a FILIAL-BA tem apenas ` +
+               `<b>${num(A.motStatus["Disponível"] || 0)} disponíveis</b> e <b>${num(A.motStatus["Aguard. Descarga Cliente"] || 0)}</b> aguardando descarga. ` +
+               `Padronizar o preenchimento diário para fechar o cruzamento motorista × veículo.`,
+      });
+    }
+
+    /* 8 · concentração da frota */
+    const sp = Object.values(A.porLocal[A.locais.find((l) => l.includes("SP"))] || {}).reduce((s, v) => s + v, 0);
+    const carreta = A.cats.filter((c) => c.startsWith("CARRETA AGREG.")).reduce((s, c) => s + Object.values(A.porCat[c]).reduce((a, v) => a + v, 0), 0);
     cards.push({
-      tipo: k.devolucoes > m.devolucoes_max ? "alerta" : k.devolucoes > mediaDev ? "tendencia" : "destaque",
-      ico: k.devolucoes > mediaDev ? "📦" : "✅", titulo: "Devoluções " + (k.devolucoes > mediaDev ? "acima da média" : "sob controle"),
-      texto: `Foram <b>${num(k.devolucoes)} devoluções</b> hoje (média histórica ${nf1.format(mediaDev)}; limite diário ${num(m.devolucoes_max)}), ` +
-             `concentradas em endereço fechado/destinatário ausente. Cada devolução gera retrabalho médio de ~12 km e nova tentativa no D+1.`,
+      tipo: "tendencia", ico: "📍", titulo: "Concentração da frota",
+      texto: `<b>${pct(pctOf(sp, t))} da frota na MATRIZ-SP</b> (${num(sp)} veículos) e <b>${pct(pctOf(carreta, t))} em CARRETA AGREG.</b> (${num(carreta)}). ` +
+             `Decisões de agregados e janelas de descarga nesses dois cortes impactam a maior parte da operação.`,
     });
-
-    /* 7 · eficiência de km / custo */
-    const kmPct = pctOf(k.km_rodado, k.km_planejado);
-    cards.push({
-      tipo: k.custo_km > m.custo_km * 1.05 ? "alerta" : k.custo_km > m.custo_km ? "tendencia" : "destaque",
-      ico: "⛽", titulo: "Custo e eficiência de rodagem",
-      texto: `Custo de <b>${brl(k.custo_km)}/km</b> contra alvo de ${brl(m.custo_km)} (${nf1.format(pctOf(k.custo_km - m.custo_km, m.custo_km))}% acima). ` +
-             `A frota rodou <b>${num(k.km_rodado)} km (${pct(kmPct)} do plano)</b> para ${pct(conc)} das entregas — sinal de rotas retrabalhadas; ` +
-             `revisar sequenciamento das rotas com menor % de conclusão.`,
-    });
-
-    /* 8 · saídas atrasadas */
-    const atrasos = ativas.filter((l) => l.saida_real !== "—" && l.saida_prevista !== "—" && l.saida_real > l.saida_prevista)
-      .map((l) => ({ ...l, min: (parseInt(l.saida_real.slice(0, 2)) * 60 + parseInt(l.saida_real.slice(3, 5))) - (parseInt(l.saida_prevista.slice(0, 2)) * 60 + parseInt(l.saida_prevista.slice(3, 5))) }))
-      .sort((a, b) => b.min - a.min);
-    if (atrasos.length) {
-      cards.push({
-        tipo: atrasos.length >= 4 ? "tendencia" : "acao", ico: "🕒", titulo: atrasos.length + " saídas após o horário previsto",
-        texto: `Atraso médio de <b>${nf1.format(atrasos.reduce((s, a) => s + a.min, 0) / atrasos.length)} min</b>; maior desvio: ` +
-               `<b>${atrasos[0].motorista}</b> (+${atrasos[0].min} min, ${atrasos[0].rota}). Saídas tardias comprimem a janela da tarde e ` +
-               `elevam horas extras (<b>${nf1.format(k.horas_extras)}h</b> hoje).`,
-      });
-    }
 
     const ordem = { alerta: 0, acao: 1, tendencia: 2, destaque: 3 };
     cards.sort((a, b) => ordem[a.tipo] - ordem[b.tipo]);
     const rotulo = { alerta: "Alerta", acao: "Ação recomendada", tendencia: "Tendência", destaque: "Destaque" };
-    const icoDefault = { alerta: "⚠️", acao: "🛠", tendencia: "📈", destaque: "⭐" };
-
     $("#insight-grid").innerHTML = cards.map((c) => `
       <article class="insight ${c.tipo}">
-        <div class="ico">${c.ico || icoDefault[c.tipo]}</div>
+        <div class="ico">${c.ico}</div>
         <div><h4>${rotulo[c.tipo]} · ${c.titulo}</h4><p>${c.texto}</p></div>
       </article>`).join("");
   }
 
-  /* =============================== tabela =============================== */
-  const RANK = { "Em rota": 0, Concluído: 1, Reserva: 2, Manutenção: 3, Parado: 4 };
-  const PILL = { "Em rota": "em-rota", Concluído: "concluido", Manutenção: "manutencao", Parado: "parado", Reserva: "reserva" };
-
-  function linhasFiltradas() {
-    let ls = estado.rotina.linhas.slice();
-    if (estado.filtro !== "todos") ls = ls.filter((l) => l.status === estado.filtro);
-    if (estado.busca) {
-      const b = estado.busca.toLowerCase();
-      ls = ls.filter((l) => [l.motorista, l.veiculo, l.placa, l.rota, l.status].join(" ").toLowerCase().includes(b));
+  /* ====================== tabela resumo (árvore) ======================= */
+  function renderResumo(A) {
+    const linhas = [];
+    let grand = 0;
+    for (const local of A.locais) {
+      const cats = [...new Set(A.res.filter((r) => r.local === local).map((r) => r.categoria))];
+      let totLocal = 0, primeiroLocal = true;
+      for (const cat of cats) {
+        const sts = A.res.filter((r) => r.local === local && r.categoria === cat);
+        const totCat = sts.reduce((s, r) => s + r.quantidade, 0);
+        totLocal += totCat;
+        sts.forEach((r, i) => {
+          linhas.push(`<tr class="tr-status">
+            <td>${primeiroLocal && i === 0 ? `<b class="cell-local">${local}</b>` : ""}</td>
+            <td>${i === 0 ? cat : ""}</td>
+            <td>${dot(r.status)} ${r.status}</td>
+            <td class="num">${num(r.quantidade)}</td></tr>`);
+        });
+        linhas.push(`<tr class="tr-cat"><td></td><td><b>${cat} Total</b></td><td></td><td class="num"><b>${num(totCat)}</b></td></tr>`);
+        primeiroLocal = false;
+      }
+      linhas.push(`<tr class="tr-local"><td></td><td><b>${local} Total</b></td><td></td><td class="num"><b>${num(totLocal)}</b></td></tr>`);
+      grand += totLocal;
     }
-    if (estado.sort) {
-      const { key, dir } = estado.sort;
-      ls.sort((a, b) => {
-        let va = a[key], vb = b[key];
-        if (key === "status") { va = RANK[va]; vb = RANK[vb]; }
-        if (typeof va === "number" && typeof vb === "number") return (va - vb) * dir;
-        return String(va).localeCompare(String(vb), "pt-BR") * dir;
-      });
-    }
-    return ls;
+    linhas.push(`<tr class="tr-grand"><td></td><td>Total geral</td><td></td><td class="num">${num(grand)}</td></tr>`);
+    $("#tbody-resumo").innerHTML = linhas.join("");
   }
 
-  function renderTabela() {
-    const ls = linhasFiltradas();
-    $("#tbody-rotina").innerHTML = ls.map((l) => {
-      const p = l.entregas_previstas ? pctOf(l.entregas_realizadas, l.entregas_previstas) : null;
-      const tone = p == null ? "" : p >= 95 ? "ok" : p >= 80 ? "" : p >= 70 ? "warn" : "risk";
-      return `<tr>
-        <td class="cell-mot">${l.motorista}</td>
-        <td>${l.veiculo}<span class="cell-sub">${l.tipo}</span></td>
-        <td>${l.placa}</td>
-        <td>${l.rota}</td>
-        <td class="num">${l.saida_prevista}</td>
-        <td class="num">${l.saida_real}${l.saida_real !== "—" && l.saida_prevista !== "—" && l.saida_real > l.saida_prevista ? ' <span style="color:var(--risk)">▲</span>' : ""}</td>
-        <td class="num">${num(l.entregas_realizadas)} / ${num(l.entregas_previstas)}</td>
-        <td>${p == null ? '<span style="color:var(--tinta-suave)">—</span>' :
-          `<div class="prog ${tone}"><div class="prog-top"><span>${pct(p)}</span></div><div class="prog-bar"><i style="width:${Math.min(100, p)}%"></i></div></div>`}</td>
-        <td class="num">${num(l.coletas_realizadas)} / ${num(l.coletas_previstas)}</td>
-        <td class="num">${l.ocorrencias ? '<b style="color:var(--risk)">' + l.ocorrencias + "</b>" : "0"}</td>
-        <td class="num">${num(l.km_rodado)}${l.km_planejado ? '<span class="cell-sub">/ ' + num(l.km_planejado) + "</span>" : ""}</td>
-        <td><span class="pill ${PILL[l.status]}">${l.status}</span></td>
-        <td style="color:var(--tinta-suave)">${l.observacao || "—"}</td>
-      </tr>`;
-    }).join("") || `<tr><td colspan="13" style="text-align:center;padding:26px;color:var(--tinta-suave)">Nenhuma linha corresponde ao filtro selecionado.</td></tr>`;
-
-    const tot = ls.reduce((s, l) => ({
-      ep: s.ep + l.entregas_previstas, er: s.er + l.entregas_realizadas,
-      cp: s.cp + l.coletas_previstas, cr: s.cr + l.coletas_realizadas,
-      oc: s.oc + l.ocorrencias, km: s.km + l.km_rodado,
-    }), { ep: 0, er: 0, cp: 0, cr: 0, oc: 0, km: 0 });
-    $("#tfoot-rotina").innerHTML = `<tr>
-      <td colspan="6">Total (${ls.length} ${ls.length === 1 ? "linha" : "linhas"})</td>
-      <td class="num">${num(tot.er)} / ${num(tot.ep)}</td>
-      <td class="num">${tot.ep ? pct(pctOf(tot.er, tot.ep)) : "—"}</td>
-      <td class="num">${num(tot.cr)} / ${num(tot.cp)}</td>
-      <td class="num">${num(tot.oc)}</td>
-      <td class="num">${num(tot.km)}</td>
-      <td colspan="2"></td>
-    </tr>`;
+  /* ===================== tabela motoristas (rotina) ==================== */
+  function renderRotina(A) {
+    /* filtros dinâmicos por local */
+    const box = $("#filters");
+    if (box.dataset.feito !== "1") {
+      box.dataset.feito = "1";
+      Object.keys(A.motLocal).forEach((l) => {
+        const b = document.createElement("button");
+        b.className = "filter"; b.dataset.local = l; b.textContent = l;
+        box.appendChild(b);
+      });
+    }
+    let grupos = Object.keys(A.motLocal);
+    if (estado.filtro !== "todos") grupos = [estado.filtro];
+    const html = [];
+    for (const loc of grupos) {
+      let ls = (estado.rotina.linhas || []).filter((l) => l.local === loc);
+      if (estado.busca) {
+        const b = estado.busca.toLowerCase();
+        ls = ls.filter((l) => (l.motorista + " " + l.local + " " + l.status).toLowerCase().includes(b));
+      }
+      if (estado.sort) {
+        const { key, dir } = estado.sort;
+        ls = ls.slice().sort((a, b) => String(a[key]).localeCompare(String(b[key]), "pt-BR") * dir);
+      }
+      if (!ls.length) continue;
+      html.push(`<tr class="tr-group"><td colspan="3">${loc} <span>· ${num(ls.length)} ${ls.length === 1 ? "motorista" : "motoristas"}</span></td></tr>`);
+      for (const l of ls) {
+        html.push(`<tr>
+          <td>${l.local}</td>
+          <td class="cell-mot">${l.motorista}</td>
+          <td><span class="status-pill"><i style="background:${COR_STATUS[l.status] || COR.cinza}"></i>${l.status}</span></td>
+        </tr>`);
+      }
+      html.push(`<tr class="tr-cat"><td colspan="2"><b>${loc} Total</b></td><td class="num"><b>${num(ls.length)}</b></td></tr>`);
+    }
+    $("#tbody-rotina").innerHTML = html.join("") ||
+      `<tr><td colspan="3" style="text-align:center;padding:26px;color:var(--tinta-suave)">Nenhum motorista corresponde ao filtro.</td></tr>`;
   }
 
   /* --------------------------- cabeçalho/rodapé -------------------------- */
-  function renderMoldura() {
+  function renderMoldura(A) {
     const m = estado.cockpit.meta;
     $("#chip-data").textContent = diaSemana(m.data_referencia) + ", " + dataBR(m.data_referencia);
-    $("#chip-filial").textContent = "🏭 " + m.filial;
-    $("#chip-atualizacao").textContent = "🕒 atualizado às " + horaBR(m.atualizado_em);
-    $("#demo-flag").hidden = !(estado.cockpit.fonte && estado.cockpit.fonte.demo);
+    $("#chip-total").textContent = "🚛 " + num(A.total) + " veículos · " + num((estado.rotina.linhas || []).length) + " motoristas";
+    $("#chip-atualizacao").textContent = "🕒 contagem às " + horaBR(m.atualizado_em);
+    const flag = $("#source-flag");
+    const f = estado.cockpit.fonte || {};
+    if (f.demo) {
+      flag.hidden = false;
+      flag.className = "source-flag warn";
+      flag.innerHTML = "⚠ Exibindo <strong>dados de demonstração</strong>. Conecte a planilha com <code>scripts/import_spreadsheet.py</code>.";
+    } else if (f.capturas) {
+      flag.hidden = false;
+      flag.className = "source-flag info";
+      flag.innerHTML = "ℹ " + f.nota;
+    } else flag.hidden = true;
     $("#footer-source").innerHTML =
-      `Fonte: ${estado.cockpit.fonte.planilha} · abas <b>${estado.cockpit.fonte.abas.join("</b> e <b>")}</b> · ` +
-      `carga em ${dataBR(m.data_referencia)} às ${horaBR(m.atualizado_em)} · COCKPIT DIÁRIO v1.0`;
+      `Fonte: ${f.planilha || "planilha da filial"} · abas <b>${(f.abas || []).join("</b> e <b>")}</b> · ` +
+      `contagem de ${dataBR(m.data_referencia)} às ${horaBR(m.atualizado_em)} · COCKPIT DIÁRIO v2.0`;
   }
 
   /* ------------------------------- eventos ------------------------------- */
@@ -592,10 +456,10 @@
       if (!b) return;
       document.querySelectorAll(".filter").forEach((f) => f.classList.remove("is-active"));
       b.classList.add("is-active");
-      estado.filtro = b.dataset.status;
-      renderTabela();
+      estado.filtro = b.dataset.local;
+      renderRotina(agregar());
     });
-    $("#busca").addEventListener("input", (e) => { estado.busca = e.target.value.trim(); renderTabela(); });
+    $("#busca").addEventListener("input", (e) => { estado.busca = e.target.value.trim(); renderRotina(agregar()); });
     document.querySelectorAll("#tabela-rotina thead th[data-key]").forEach((th) => {
       th.addEventListener("click", () => {
         const key = th.dataset.key;
@@ -603,29 +467,28 @@
         estado.sort = { key, dir };
         document.querySelectorAll("#tabela-rotina thead th .arrow").forEach((a) => a.remove());
         const s = document.createElement("span");
-        s.className = "arrow";
-        s.textContent = dir === 1 ? " ▲" : " ▼";
+        s.className = "arrow"; s.textContent = dir === 1 ? " ▲" : " ▼";
         th.appendChild(s);
-        renderTabela();
+        renderRotina(agregar());
       });
     });
     $("#btn-atualizar").addEventListener("click", async () => {
       const btn = $("#btn-atualizar");
-      btn.disabled = true;
-      btn.style.opacity = .6;
+      btn.disabled = true; btn.style.opacity = .6;
       try { await carregar(); renderizar(); }
       catch (err) { alert("Falha ao recarregar os dados: " + err.message); }
-      btn.disabled = false;
-      btn.style.opacity = 1;
+      btn.disabled = false; btn.style.opacity = 1;
     });
   }
 
   function renderizar() {
-    renderMoldura();
-    renderKPIs();
-    renderCharts();
-    renderInsights();
-    renderTabela();
+    const A = agregar();
+    renderMoldura(A);
+    renderKPIs(A);
+    renderCharts(A);
+    renderInsights(A);
+    renderResumo(A);
+    renderRotina(A);
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
