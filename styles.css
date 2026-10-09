@@ -18,9 +18,9 @@
 
 html { min-width: 320px; scroll-behavior: smooth; }
 body { margin: 0; min-height: 100vh; }
-button, input, textarea { font: inherit; }
+button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
-button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: 3px solid rgba(26, 110, 191, .33);
   outline-offset: 3px;
 }
@@ -252,6 +252,20 @@ h1 { margin: 0; color: #1e2a3a; font-size: clamp(30px, 2.7vw, 37px); font-weight
 .filter-button:hover { color: #4a5668; }
 .filter-button.active { color: #1b67ac; background: #edf6ff; }
 .filter-button svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.45; stroke-linejoin: round; }
+.sector-list { display: flex; flex-direction: column; gap: 23px; }
+.sector-group { min-width: 0; }
+.sector-heading { margin-bottom: 11px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sector-heading-title { min-width: 0; display: flex; align-items: center; gap: 9px; }
+.sector-marker { width: 29px; height: 29px; display: grid; flex: 0 0 auto; place-items: center; color: #2675b8; background: #e9f4fd; border: 1px solid #d9eaf9; border-radius: 8px; }
+.sector-marker svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.sector-heading h3 { margin: 0; color: #334055; font-size: 14px; font-weight: 680; letter-spacing: -.15px; }
+.sector-count { min-width: 21px; height: 20px; padding: 0 6px; display: grid; place-items: center; color: #6f7d8f; background: #fff; border: 1px solid #e3eaf2; border-radius: 6px; font-size: 10px; font-weight: 700; }
+.sector-add-button { min-height: 30px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; color: #2169a8; background: #fff; border: 1px solid #dfeaf5; border-radius: 7px; font-size: 10px; font-weight: 650; transition: color .15s ease, background .15s ease, border-color .15s ease; }
+.sector-add-button:hover { color: #fff; background: #176cc1; border-color: #176cc1; }
+.sector-add-button svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
+.sector-empty { min-height: 86px; padding: 13px 15px; display: flex; align-items: center; gap: 10px; color: #8390a1; background: rgba(255,255,255,.68); border: 1px dashed #d8e4ef; border-radius: 10px; font-size: 11px; }
+.sector-empty-icon { width: 25px; height: 25px; display: grid; flex: 0 0 auto; place-items: center; color: #4386bc; background: #edf6fd; border-radius: 7px; font-size: 17px; font-weight: 450; }
+.sector-empty .sector-add-button { margin-left: auto; flex: 0 0 auto; }
 .repo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .repo-card {
   min-width: 0;
@@ -364,11 +378,12 @@ h1 { margin: 0; color: #1e2a3a; font-size: clamp(30px, 2.7vw, 37px); font-weight
 .form-field > span { display: flex; align-items: center; gap: 3px; color: #465265; font-size: 11px; font-weight: 650; }
 .form-field > span b { color: #d27575; font-weight: 650; }
 .form-field > span small { margin-left: auto; color: #a0a8b4; font-size: 9px; font-weight: 700; letter-spacing: .5px; }
-.form-field input, .form-field textarea { width: 100%; padding: 10px 11px; color: #283548; background: #fff; border: 1px solid #e2e7ee; border-radius: 7px; outline: none; font-size: 11px; transition: border-color .15s ease, box-shadow .15s ease; }
-.form-field input { height: 38px; }
+.form-field input, .form-field textarea, .form-field select { width: 100%; padding: 10px 11px; color: #283548; background-color: #fff; border: 1px solid #e2e7ee; border-radius: 7px; outline: none; font-size: 11px; transition: border-color .15s ease, box-shadow .15s ease; }
+.form-field input, .form-field select { height: 38px; }
+.form-field select { padding-top: 0; padding-bottom: 0; }
 .form-field textarea { min-height: 74px; resize: vertical; line-height: 1.5; }
-.form-field input:focus, .form-field textarea:focus { border-color: #8abde8; box-shadow: 0 0 0 3px rgba(26,110,191,.1); }
-.form-field input[aria-invalid="true"] { border-color: #d98181; box-shadow: 0 0 0 3px rgba(217,129,129,.1); }
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: #8abde8; box-shadow: 0 0 0 3px rgba(26,110,191,.1); }
+.form-field input[aria-invalid="true"], .form-field select[aria-invalid="true"] { border-color: #d98181; box-shadow: 0 0 0 3px rgba(217,129,129,.1); }
 .form-field input::placeholder, .form-field textarea::placeholder { color: #b0b8c4; }
 .form-field > small { color: #9aa3b0; font-size: 10px; line-height: 1.45; }
 .form-field > small.field-error { display: none; color: #c45555; }
@@ -458,6 +473,9 @@ h1 { margin: 0; color: #1e2a3a; font-size: clamp(30px, 2.7vw, 37px); font-weight
   .section-heading h2 { font-size: 15px; }
   .section-heading p { font-size: 10px; }
   .view-controls { align-self: flex-start; }
+  .sector-heading h3 { font-size: 13px; }
+  .sector-empty { flex-wrap: wrap; }
+  .sector-empty .sector-add-button { margin-left: 35px; }
   .repo-grid { grid-template-columns: 1fr; gap: 10px; }
   .repo-card { min-height: 210px; padding: 15px; }
   .page-footer { align-items: flex-start; flex-direction: column; gap: 8px; font-size: 9px; }

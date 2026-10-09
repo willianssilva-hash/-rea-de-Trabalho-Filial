@@ -140,7 +140,7 @@
               </div>
             </div>
 
-            <div class="repo-grid" id="repo-grid" aria-live="polite"></div>
+            <div class="sector-list" id="repo-grid" aria-live="polite" aria-label="Repositórios organizados por setor"></div>
             <div class="empty-state" id="empty-state" hidden>
               <div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></div>
               <h3 id="empty-title">Nenhum repositório encontrado</h3>
@@ -170,6 +170,16 @@
         <label class="form-field" for="repo-name">
           <span>Nome <b>*</b></span>
           <input id="repo-name" name="name" type="text" maxlength="50" placeholder="Ex.: Painel de vendas" required />
+        </label>
+        <label class="form-field" for="repo-sector">
+          <span>Setor <b>*</b></span>
+          <select id="repo-sector" name="sector" required aria-describedby="sector-error">
+            <option value="" selected disabled>Selecione o setor</option>
+            <option value="Captação">Captação</option>
+            <option value="Monitoramento">Monitoramento</option>
+            <option value="Liberação">Liberação</option>
+          </select>
+          <small class="field-error" id="sector-error" role="alert"></small>
         </label>
         <label class="form-field" for="repo-url">
           <span>Endereço do repositório ou painel <b>*</b></span>

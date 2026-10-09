@@ -2,10 +2,12 @@
   "use strict";
 
   const STORAGE_KEY = "workspace-repositories-v1";
+  const SECTORS = ["Captação", "Monitoramento", "Liberação"];
   const DEFAULT_REPOSITORIES = [
     {
       id: "monitoramento2",
       name: "Painel de Monitoramento",
+      sector: "Monitoramento",
       url: "https://willianssilva-hash.github.io/Monitoramento2/",
       description: "Acesse diretamente as informações do Painel de Monitoramento da filial.",
       favorite: false,
@@ -25,6 +27,8 @@
     dialog: document.querySelector("#repo-dialog"),
     form: document.querySelector("#repo-form"),
     name: document.querySelector("#repo-name"),
+    sector: document.querySelector("#repo-sector"),
+    sectorError: document.querySelector("#sector-error"),
     url: document.querySelector("#repo-url"),
     description: document.querySelector("#repo-description"),
     urlError: document.querySelector("#url-error"),
@@ -44,16 +48,28 @@
       }
       const parsed = JSON.parse(saved);
       if (!Array.isArray(parsed)) throw new TypeError("Formato de repositórios inválido");
-      return parsed.filter(isValidSavedRepository).map((repository) => {
-        if (repository.id !== "monitoramento2") return repository;
-        return {
-          ...repository,
-          name: DEFAULT_REPOSITORIES[0].name,
-          url: DEFAULT_REPOSITORIES[0].url,
-          description: DEFAULT_REPOSITORIES[0].description,
-          builtIn: true,
-        };
+      const savedRepositories = parsed.filter(isValidSavedRepository);
+      const normalizedRepositories = savedRepositories.map((repository) => {
+        const normalizedRepository = repository.id === "monitoramento2"
+          ? {
+              ...repository,
+              name: DEFAULT_REPOSITORIES[0].name,
+              url: DEFAULT_REPOSITORIES[0].url,
+              description: DEFAULT_REPOSITORIES[0].description,
+              builtIn: true,
+            }
+          : { ...repository };
+        normalizedRepository.sector = SECTORS.includes(repository.sector) ? repository.sector : "Monitoramento";
+        return normalizedRepository;
       });
+      if (normalizedRepositories.some((repository, index) => repository.sector !== savedRepositories[index].sector)) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizedRepositories));
+        } catch (migrationError) {
+          console.warn("Não foi possível migrar os setores dos repositórios salvos.", migrationError);
+        }
+      }
+      return normalizedRepositories;
     } catch (error) {
       console.warn("Não foi possível ler os repositórios salvos.", error);
       return structuredClone(DEFAULT_REPOSITORIES);
@@ -199,19 +215,56 @@
       </article>`;
   }
 
+  function createSectorGroup(sector, sectorRepositories, showSectorActions) {
+    const sectorIndex = SECTORS.indexOf(sector);
+    const headingId = `sector-title-${sectorIndex}`;
+    const escapedSector = escapeHTML(sector);
+    const cards = sectorRepositories.length
+      ? `<div class="repo-grid" aria-label="Repositórios do setor ${escapedSector}">${sectorRepositories.map((repository) => createCard(repository, repositories.indexOf(repository))).join("")}</div>`
+      : `<div class="sector-empty">
+          <span class="sector-empty-icon" aria-hidden="true">+</span>
+          <span>Nenhum repositório neste setor ainda.</span>
+          <button class="sector-add-button" type="button" data-add-sector="${escapedSector}" aria-label="Adicionar repositório ao setor ${escapedSector}">Adicionar em ${escapedSector}</button>
+        </div>`;
+    const addButton = showSectorActions && sectorRepositories.length
+      ? `<button class="sector-add-button" type="button" data-add-sector="${escapedSector}" aria-label="Adicionar repositório ao setor ${escapedSector}">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>
+          <span>Adicionar</span>
+        </button>`
+      : "";
+
+    return `<section class="sector-group" aria-labelledby="${headingId}">
+      <div class="sector-heading">
+        <div class="sector-heading-title">
+          <span class="sector-marker" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 15.5h12M5.5 13V8m4 5V4.5m4 8.5v-3"/><path d="m4.5 6.5 5-3 4.5 5 3-2"/></svg></span>
+          <h3 id="${headingId}">${escapedSector}</h3>
+          <span class="sector-count">${sectorRepositories.length}</span>
+        </div>
+        ${addButton}
+      </div>
+      ${cards}
+    </section>`;
+  }
+
   function render() {
     const query = elements.search.value.trim().toLocaleLowerCase("pt-BR");
     const visibleRepositories = repositories.filter((repository) => {
       if (activeFilter === "favorites" && !repository.favorite) return false;
-      const searchContent = `${repository.name} ${repository.description || ""} ${repository.url} ${getPlatform(repository.url).label}`;
+      const searchContent = `${repository.sector} ${repository.name} ${repository.description || ""} ${repository.url} ${getPlatform(repository.url).label}`;
       return searchContent.toLocaleLowerCase("pt-BR").includes(query);
     });
+    const showingAllSectors = activeFilter === "all" && !query;
+    const sectorGroups = SECTORS.map((sector) => {
+      const sectorRepositories = visibleRepositories.filter((repository) => repository.sector === sector);
+      if (sectorRepositories.length === 0 && !showingAllSectors) return "";
+      return createSectorGroup(sector, sectorRepositories, showingAllSectors);
+    }).join("");
 
     elements.count.textContent = String(repositories.length).padStart(2, "0");
     elements.sidebarCount.textContent = String(repositories.length);
-    elements.grid.innerHTML = visibleRepositories.map((repository) => createCard(repository, repositories.indexOf(repository))).join("");
-    elements.grid.hidden = visibleRepositories.length === 0;
-    elements.empty.hidden = visibleRepositories.length > 0;
+    elements.grid.innerHTML = sectorGroups;
+    elements.grid.hidden = !sectorGroups;
+    elements.empty.hidden = visibleRepositories.length > 0 || showingAllSectors;
 
     if (activeFilter === "favorites" && !query) {
       elements.emptyTitle.textContent = "Seus favoritos aparecem aqui";
@@ -236,11 +289,26 @@
     render();
   }
 
-  function openDialog() {
+  function openDialog(sector) {
     elements.form.reset();
+    clearSectorError();
     clearUrlError();
+    if (SECTORS.includes(sector)) elements.sector.value = sector;
     elements.dialog.showModal();
     window.setTimeout(() => elements.name.focus(), 0);
+  }
+
+  function clearSectorError() {
+    elements.sectorError.textContent = "";
+    elements.sectorError.classList.remove("visible");
+    elements.sector.removeAttribute("aria-invalid");
+  }
+
+  function showSectorError(message) {
+    elements.sectorError.textContent = message;
+    elements.sectorError.classList.add("visible");
+    elements.sector.setAttribute("aria-invalid", "true");
+    elements.sector.focus();
   }
 
   function clearUrlError() {
@@ -279,6 +347,7 @@
   elements.form.addEventListener("submit", (event) => {
     event.preventDefault();
     const name = elements.name.value.trim();
+    const sector = elements.sector.value;
     const description = elements.description.value.trim();
     const rawUrl = elements.url.value;
 
@@ -288,7 +357,12 @@
       return;
     }
     elements.name.removeAttribute("aria-invalid");
+    clearSectorError();
     clearUrlError();
+    if (!SECTORS.includes(sector)) {
+      showSectorError("Selecione o setor deste repositório.");
+      return;
+    }
 
     let url;
     try {
@@ -310,6 +384,7 @@
     const repository = {
       id: globalThis.crypto?.randomUUID?.() || `repo-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       name,
+      sector,
       url,
       description,
       favorite: false,
@@ -324,8 +399,14 @@
   });
 
   elements.url.addEventListener("input", clearUrlError);
+  elements.sector.addEventListener("change", clearSectorError);
   elements.name.addEventListener("input", () => elements.name.removeAttribute("aria-invalid"));
   elements.grid.addEventListener("click", (event) => {
+    const addButton = event.target.closest("[data-add-sector]");
+    if (addButton) {
+      openDialog(addButton.dataset.addSector);
+      return;
+    }
     const button = event.target.closest("[data-favorite-id]");
     if (!button) return;
     const repository = repositories.find((item) => item.id === button.dataset.favoriteId);
