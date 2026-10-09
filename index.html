@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <meta
+      name="description"
+      content="Uma área de trabalho para reunir e abrir seus repositórios e painéis em um só lugar."
+    />
+    <title>Área de trabalho · Repositórios</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <a class="brand" href="#inicio" aria-label="Área de trabalho, início">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+          <span class="brand-copy">
+            <strong>workspace</strong>
+            <small>ÁREA DE TRABALHO</small>
+          </span>
+        </a>
+
+        <div class="workspace-switcher">
+          <span class="workspace-avatar" aria-hidden="true">W</span>
+          <span class="workspace-copy">
+            <small>ESPAÇO ATUAL</small>
+            <strong>Meu espaço</strong>
+          </span>
+          <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="m6 8 4 4 4-4" />
+          </svg>
+        </div>
+
+        <p class="nav-label">ESPAÇO DE TRABALHO</p>
+        <nav class="side-nav">
+          <a class="nav-item" href="#inicio" aria-label="Visão geral">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+            <span>Visão geral</span>
+          </a>
+          <a class="nav-item active" href="#repositorios" aria-current="page" aria-label="Repositórios">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.75A1.75 1.75 0 0 1 6.75 3H20v15H6.75A1.75 1.75 0 0 0 5 19.75v-15Z"/><path d="M5 19.75A1.75 1.75 0 0 1 6.75 18H20M8.5 7h8M8.5 10.5h8"/></svg>
+            <span>Repositórios</span>
+            <span class="nav-count" id="sidebar-count">1</span>
+          </a>
+          <button class="nav-item nav-button" id="favorites-nav" type="button" aria-label="Favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.67 6.26.91-4.53 4.42 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.94 9.58l6.26-.91L12 3Z"/></svg>
+            <span>Favoritos</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-tip-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5a6.5 6.5 0 0 0-4.2 11.46c.84.72 1.2 1.5 1.2 2.54h6c0-1.04.36-1.82 1.2-2.54A6.5 6.5 0 0 0 12 3.5Z"/><path d="M9.5 20.5h5M10 17.5h4"/></svg>
+          </div>
+          <strong>Seu espaço, do seu jeito</strong>
+          <p>Adicione seus painéis favoritos e tenha tudo a um clique.</p>
+          <button type="button" class="sidebar-help" id="sidebar-add">Adicionar repositório <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="sidebar-profile">
+          <div class="profile-avatar" aria-hidden="true">M</div>
+          <div class="profile-copy"><strong>Meu espaço</strong><small>Área pessoal</small></div>
+          <span class="profile-dots" aria-hidden="true">···</span>
+        </div>
+      </aside>
+
+      <main class="main-content" id="inicio">
+        <header class="topbar">
+          <div class="breadcrumbs" aria-label="Localização">
+            <span>Meu espaço</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+            <strong>Repositórios</strong>
+          </div>
+          <div class="topbar-actions">
+            <label class="search-box" for="search-input">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+              <input id="search-input" type="search" placeholder="Buscar repositórios" autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+            <button class="avatar-button" type="button" aria-label="Perfil do espaço pessoal">M</button>
+          </div>
+        </header>
+
+        <div class="page-content" id="repositorios">
+          <section class="page-heading" aria-labelledby="page-title">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-dot"></span> MEU ESPAÇO DE TRABALHO</div>
+              <h1 id="page-title">Repositórios<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Seus painéis e projetos, reunidos em um só lugar.</p>
+            </div>
+            <button class="primary-button" id="add-repo-button" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>
+              <span>Adicionar repositório</span>
+            </button>
+          </section>
+
+          <section class="welcome-banner" aria-label="Acesso rápido">
+            <div class="banner-copy">
+              <span class="banner-kicker"><span class="pulse-dot"></span> SEU HUB DE ACESSO</span>
+              <h2>Menos procura.<br /><span>Mais tempo para fazer.</span></h2>
+              <p>Abra seus repositórios e aplicações publicados direto desta área de trabalho.</p>
+              <a href="#repo-grid" class="banner-link">Ver meus repositórios <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="banner-art" aria-hidden="true">
+              <div class="art-orbit orbit-one"></div>
+              <div class="art-orbit orbit-two"></div>
+              <div class="art-window">
+                <div class="art-window-top"><i></i><i></i><i></i><span>meu espaço</span></div>
+                <div class="art-window-body">
+                  <div class="art-side-line"></div>
+                  <div class="art-main-lines"><b></b><b></b><b></b></div>
+                  <div class="art-mini-card"><span class="art-chart"><i></i><i></i><i></i><i></i><i></i></span><small>PROJETO</small></div>
+                </div>
+              </div>
+              <div class="art-floating-icon"><svg viewBox="0 0 24 24"><path d="m7 17 10-10M8 7h9v9"/></svg></div>
+              <span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✦</span>
+            </div>
+          </section>
+
+          <section class="repository-section" aria-labelledby="repository-title">
+            <div class="section-heading">
+              <div>
+                <div class="section-title-row">
+                  <h2 id="repository-title">Meus repositórios</h2>
+                  <span class="section-count" id="repo-count">1</span>
+                </div>
+                <p>Links rápidos para seus projetos e painéis.</p>
+              </div>
+              <div class="view-controls" aria-label="Filtrar repositórios">
+                <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+                <button class="filter-button" type="button" data-filter="favorites" aria-pressed="false">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.5 2.3 4.66 5.14.75-3.72 3.62.88 5.12L10 14.23l-4.6 2.42.88-5.12-3.72-3.62 5.14-.75L10 2.5Z"/></svg>
+                  Favoritos
+                </button>
+              </div>
+            </div>
+
+            <div class="repo-grid" id="repo-grid" aria-live="polite"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></div>
+              <h3 id="empty-title">Nenhum repositório encontrado</h3>
+              <p id="empty-copy">Tente outro termo ou adicione um novo repositório ao seu espaço.</p>
+              <button class="text-button" type="button" id="empty-add-button">Adicionar repositório <span aria-hidden="true">↗</span></button>
+            </div>
+          </section>
+
+          <footer class="page-footer">
+            <span><span class="footer-dot"></span> Seu espaço está pronto para novos projetos</span>
+            <span>Os repositórios adicionados são salvos neste navegador.</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="repo-dialog" id="repo-dialog" aria-labelledby="dialog-title">
+      <form id="repo-form" novalidate>
+        <div class="dialog-header">
+          <div class="dialog-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.75A1.75 1.75 0 0 1 6.75 3H20v15H6.75A1.75 1.75 0 0 0 5 19.75v-15Z"/><path d="M5 19.75A1.75 1.75 0 0 1 6.75 18H20M8.5 7h8M8.5 10.5h8"/></svg></div>
+          <button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar janela">×</button>
+        </div>
+        <p class="dialog-eyebrow">AMPLIE SEU ESPAÇO</p>
+        <h2 id="dialog-title">Adicionar repositório</h2>
+        <p class="dialog-description">Salve um projeto ou painel para acessá-lo rapidamente sempre que precisar.</p>
+
+        <label class="form-field" for="repo-name">
+          <span>Nome <b>*</b></span>
+          <input id="repo-name" name="name" type="text" maxlength="50" placeholder="Ex.: Painel de vendas" required />
+        </label>
+        <label class="form-field" for="repo-url">
+          <span>Endereço do repositório ou painel <b>*</b></span>
+          <input id="repo-url" name="url" type="text" inputmode="url" maxlength="500" placeholder="https://exemplo.github.io/projeto" required aria-describedby="url-help url-error" />
+          <small id="url-help">Cole o link completo. Se não incluir https://, adicionaremos automaticamente.</small>
+          <small class="field-error" id="url-error" role="alert"></small>
+        </label>
+        <label class="form-field" for="repo-description">
+          <span>Descrição <small>OPCIONAL</small></span>
+          <textarea id="repo-description" name="description" rows="3" maxlength="140" placeholder="Uma breve descrição para identificar este link"></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button class="secondary-button" id="dialog-cancel" type="button">Cancelar</button>
+          <button class="primary-button" type="submit"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>Salvar repositório</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
