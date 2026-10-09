@@ -107,34 +107,6 @@
     })[character]);
   }
 
-  function getPlatform(urlString) {
-    try {
-      const hostname = new URL(urlString).hostname.toLowerCase();
-      if (hostname === "github.io" || hostname.endsWith(".github.io")) {
-        return { label: "GitHub Pages", source: "github", tone: "blue" };
-      }
-      if (hostname === "github.com" || hostname.endsWith(".github.com")) {
-        return { label: "GitHub", source: "github", tone: "blue" };
-      }
-      if (hostname === "gitlab.com" || hostname.endsWith(".gitlab.io")) {
-        return { label: hostname.endsWith(".gitlab.io") ? "GitLab Pages" : "GitLab", source: "github", tone: "orange" };
-      }
-      return { label: "Site externo", source: "site", tone: "green" };
-    } catch {
-      return { label: "Link externo", source: "site", tone: "green" };
-    }
-  }
-
-  function getDisplayUrl(urlString) {
-    try {
-      const parsed = new URL(urlString);
-      const path = decodeURIComponent(parsed.pathname).replace(/\/$/, "");
-      return `${parsed.host}${path}`;
-    } catch {
-      return urlString;
-    }
-  }
-
   function iconForRepository(repository, tone) {
     if (repository.id === "monitoramento2" || /monitoramento|monitoring/i.test(repository.name)) {
       return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 19.5h17M5.5 16V9.5M10 16V5.5M14.5 16v-4M19 16V7"/><path d="m4.5 7.5 5-3 4.5 5 5-3"/></svg>';
@@ -172,12 +144,9 @@
   }
 
   function createCard(repository, index) {
-    const platform = getPlatform(repository.url);
     const tone = repository.id === "monitoramento2" ? "blue" : TONES[index % TONES.length];
     const name = escapeHTML(repository.name);
-    const description = escapeHTML(repository.description || "Acesse este projeto diretamente.");
     const href = escapeHTML(repository.url);
-    const displayUrl = escapeHTML(getDisplayUrl(repository.url));
     const accessLabel = repository.id === "monitoramento2" ? "Torre de Controle Monitoramento" : name;
     const accessIcon = iconForAccessButton(repository.name);
     const accessAriaLabel = repository.id === "monitoramento2"
@@ -206,7 +175,6 @@
         <div class="repo-card-top">
           <div class="repo-icon" data-tone="${tone}">${iconForRepository(repository, tone)}</div>
           <div class="repo-card-actions">
-            <span class="repo-type">${escapeHTML(platform.label)}</span>
             <button class="favorite-button${repository.favorite ? " is-favorite" : ""}" type="button" data-favorite-id="${escapedId}" aria-label="${favoriteLabel}" aria-pressed="${Boolean(repository.favorite)}">
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.5 2.3 4.66 5.14.75-3.72 3.62.88 5.12L10 14.23l-4.6 2.42.88-5.12-3.72-3.62 5.14-.75L10 2.5Z"/></svg>
             </button>
@@ -224,19 +192,11 @@
           </div>
         </div>
         <h3 title="${name}">${name}</h3>
-        <p class="repo-description">${description}</p>
-        <div class="repo-link-host" title="${displayUrl}">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M3.2 10h13.6M10 3c1.8 2 2.7 4.3 2.7 7S11.8 15 10 17c-1.8-2-2.7-4.3-2.7-7S8.2 5 10 3Z"/></svg>
-          <span>${displayUrl}</span>
-        </div>
-        <div class="repo-card-bottom repo-access-bottom">
-          <span class="repo-source"><i class="source-dot" data-source="${platform.source}"></i>${escapeHTML(platform.label)}</span>
-          <a class="open-repo-button primary-access-button" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${accessAriaLabel}">
-            ${accessIcon}
-            <span class="access-button-label">${accessLabel}</span>
-            <svg class="external-link-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7"/></svg>
-          </a>
-        </div>
+        <a class="open-repo-button primary-access-button" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${accessAriaLabel}">
+          ${accessIcon}
+          <span class="access-button-label">${accessLabel}</span>
+          <svg class="external-link-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7"/></svg>
+        </a>
       </article>`;
   }
 
@@ -275,7 +235,7 @@
     const query = elements.search.value.trim().toLocaleLowerCase("pt-BR");
     const visibleRepositories = repositories.filter((repository) => {
       if (activeFilter === "favorites" && !repository.favorite) return false;
-      const searchContent = `${repository.sector} ${repository.name} ${repository.description || ""} ${repository.url} ${getPlatform(repository.url).label}`;
+      const searchContent = `${repository.sector} ${repository.name} ${repository.description || ""} ${repository.url}`;
       return searchContent.toLocaleLowerCase("pt-BR").includes(query);
     });
     const showingAllSectors = activeFilter === "all" && !query;
