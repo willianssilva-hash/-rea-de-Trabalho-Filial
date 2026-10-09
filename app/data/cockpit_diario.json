@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "aba_origem": "Cockpit Diário",
+    "filial": "Filial 01",
+    "data_referencia": "2026-10-09",
+    "atualizado_em": "2026-10-09T16:20:00",
+    "otd": 95.0,
+    "sla": 96.0,
+    "disponibilidade_frota": 90.0,
+    "custo_km": 3.2,
+    "devolucoes_max": 8
+  },
+  "indicadores": {
+    "entregas_previstas": 537,
+    "entregas_realizadas": 459,
+    "entregas_em_rota": 45,
+    "entregas_pendentes": 22,
+    "devolucoes": 8,
+    "avarias": 3,
+    "coletas_previstas": 93,
+    "coletas_realizadas": 76,
+    "otd": 91.8,
+    "sla": 94.1,
+    "veiculos_total": 18,
+    "veiculos_ativos": 14,
+    "veiculos_manutencao": 2,
+    "veiculos_parados": 1,
+    "veiculos_reserva": 1,
+    "km_planejado": 1859,
+    "km_rodado": 1808,
+    "custo_km": 3.42,
+    "horas_extras": 14.5,
+    "absenteismo": 5.6,
+    "ocorrencias": 6
+  },
+  "status_entregas": {
+    "Concluídas": 459,
+    "Em rota": 45,
+    "Pendentes": 22,
+    "Devolução": 8,
+    "Avaria": 3
+  },
+  "curva_horaria": {
+    "horas": [
+      "07h",
+      "08h",
+      "09h",
+      "10h",
+      "11h",
+      "12h",
+      "13h",
+      "14h",
+      "15h",
+      "16h",
+      "17h",
+      "18h"
+    ],
+    "previsto_acumulado": [
+      42,
+      96,
+      156,
+      219,
+      281,
+      322,
+      361,
+      407,
+      452,
+      494,
+      521,
+      537
+    ],
+    "realizado_acumulado": [
+      40,
+      92,
+      149,
+      210,
+      268,
+      307,
+      344,
+      386,
+      424,
+      459,
+      null,
+      null
+    ]
+  },
+  "historico": [
+    {
+      "data": "2026-09-25",
+      "entregas_previstas": 498,
+      "entregas_realizadas": 464,
+      "otd": 93.1,
+      "devolucoes": 7,
+      "ocorrencias": 3
+    },
+    {
+      "data": "2026-09-26",
+      "entregas_previstas": 512,
+      "entregas_realizadas": 484,
+      "otd": 94.6,
+      "devolucoes": 9,
+      "ocorrencias": 2
+    },
+    {
+      "data": "2026-09-28",
+      "entregas_previstas": 521,
+      "entregas_realizadas": 496,
+      "otd": 95.2,
+      "devolucoes": 5,
+      "ocorrencias": 1
+    },
+    {
+      "data": "2026-09-29",
+      "entregas_previstas": 515,
+      "entregas_realizadas": 484,
+      "otd": 94.0,
+      "devolucoes": 8,
+      "ocorrencias": 3
+    },
+    {
+      "data": "2026-09-30",
+      "entregas_previstas": 502,
+      "entregas_realizadas": 460,
+      "otd": 91.7,
+      "devolucoes": 12,
+      "ocorrencias": 5
+    },
+    {
+      "data": "2026-10-01",
+      "entregas_previstas": 528,
+      "entregas_realizadas": 506,
+      "otd": 95.8,
+      "devolucoes": 4,
+      "ocorrencias": 2
+    },
+    {
+      "data": "2026-10-02",
+      "entregas_previstas": 511,
+      "entregas_realizadas": 480,
+      "otd": 93.9,
+      "devolucoes": 7,
+      "ocorrencias": 3
+    },
+    {
+      "data": "2026-10-03",
+      "entregas_previstas": 534,
+      "entregas_realizadas": 513,
+      "otd": 96.1,
+      "devolucoes": 5,
+      "ocorrencias": 1
+    },
+    {
+      "data": "2026-10-05",
+      "entregas_previstas": 517,
+      "entregas_realizadas": 488,
+      "otd": 94.4,
+      "devolucoes": 6,
+      "ocorrencias": 2
+    },
+    {
+      "data": "2026-10-06",
+      "entregas_previstas": 503,
+      "entregas_realizadas": 469,
+      "otd": 93.2,
+      "devolucoes": 8,
+      "ocorrencias": 3
+    },
+    {
+      "data": "2026-10-07",
+      "entregas_previstas": 524,
+      "entregas_realizadas": 498,
+      "otd": 95.0,
+      "devolucoes": 5,
+      "ocorrencias": 2
+    },
+    {
+      "data": "2026-10-08",
+      "entregas_previstas": 512,
+      "entregas_realizadas": 482,
+      "otd": 94.2,
+      "devolucoes": 11,
+      "ocorrencias": 6
+    }
+  ],
+  "fonte": {
+    "planilha": "Área de Trabalho Filial (Google Sheets)",
+    "abas": [
+      "Cockpit Diário",
+      "Rotina Diária Mot. Frota2"
+    ],
+    "demo": true,
+    "nota": "Dados de demonstração no mesmo esquema das abas. Substitua via scripts/import_spreadsheet.py."
+  }
+}

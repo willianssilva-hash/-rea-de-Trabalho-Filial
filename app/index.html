@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COCKPIT DIÁRIO • Colormaq | Área de Trabalho Filial</title>
+<meta name="description" content="Cockpit Diário da operação de entregas e coletas da filial Colormaq — indicadores, rotina de motoristas e frota.">
+<link rel="icon" type="image/png" href="assets/logo-colormaq-blue.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================ TOPO ============================ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="assets/logo-colormaq-white.png" alt="Colormaq" class="brand-logo">
+      <div class="brand-text">
+        <h1>COCKPIT DIÁRIO</h1>
+        <p>Área de Trabalho Filial · Operação de Entregas &amp; Coletas</p>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <span class="chip chip-light" id="chip-data">—</span>
+      <span class="chip chip-light" id="chip-filial">—</span>
+      <span class="chip chip-light" id="chip-atualizacao" title="Horário da última carga de dados">—</span>
+      <button class="btn-refresh" id="btn-atualizar" title="Recarregar dados da planilha">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M17.65 6.35A7.96 7.96 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        Atualizar
+      </button>
+    </div>
+  </div>
+  <div class="demo-flag" id="demo-flag" hidden>
+    ⚠ Exibindo <strong>dados de demonstração</strong> no esquema das abas “Cockpit Diário” e “Rotina Diária Mot. Frota2”.
+    Conecte a planilha real com <code>scripts/import_spreadsheet.py</code>.
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ========================= KPIs ========================= -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Indicadores do dia</h2>
+      <span class="section-sub">Aba “Cockpit Diário”</span>
+    </div>
+    <div class="kpi-grid" id="kpi-grid"><!-- preenchido via JS --></div>
+  </section>
+
+  <!-- ======================= GRÁFICOS ======================= -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Visão geral da operação</h2>
+      <span class="section-sub">Acompanhamento intra-dia e histórico</span>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card span-2">
+        <header class="card-head">
+          <h3>Curva de entregas do dia <small>(acumulado previsto × realizado)</small></h3>
+          <span class="card-tag" id="tag-curva"></span>
+        </header>
+        <div class="chart-box tall"><canvas id="chart-curva"></canvas></div>
+      </article>
+
+      <article class="card">
+        <header class="card-head"><h3>Status das entregas</h3></header>
+        <div class="chart-box tall"><canvas id="chart-status"></canvas></div>
+      </article>
+
+      <article class="card span-2">
+        <header class="card-head">
+          <h3>OTD × meta <small>· últimos dias de operação</small></h3>
+          <span class="card-tag" id="tag-otd"></span>
+        </header>
+        <div class="chart-box"><canvas id="chart-otd"></canvas></div>
+      </article>
+
+      <article class="card">
+        <header class="card-head"><h3>Disponibilidade da frota</h3></header>
+        <div class="chart-box"><canvas id="chart-frota"></canvas></div>
+      </article>
+
+      <article class="card span-2">
+        <header class="card-head">
+          <h3>Conclusão de rota por motorista <small>· aba “Rotina Diária Mot. Frota2”</small></h3>
+          <span class="card-tag">meta ≥ 95%</span>
+        </header>
+        <div class="chart-box tall"><canvas id="chart-motoristas"></canvas></div>
+      </article>
+
+      <article class="card">
+        <header class="card-head"><h3>Devoluções × ocorrências</h3><span class="card-tag">histórico</span></header>
+        <div class="chart-box tall"><canvas id="chart-devol"></canvas></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================== INSIGHTS ======================== -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Insights &amp; destaques</h2>
+      <span class="section-sub">Leitura automática dos dados do dia</span>
+    </div>
+    <div class="insight-summary" id="insight-summary"></div>
+    <div class="insight-grid" id="insight-grid"></div>
+  </section>
+
+  <!-- ==================== ROTINA / FROTA ==================== -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Rotina diária — motoristas &amp; frota</h2>
+      <span class="section-sub">Aba “Rotina Diária Mot. Frota2”</span>
+    </div>
+
+    <div class="table-tools">
+      <div class="filters" id="filters">
+        <button class="filter is-active" data-status="todos">Todos</button>
+        <button class="filter" data-status="Em rota">Em rota</button>
+        <button class="filter" data-status="Concluído">Concluídos</button>
+        <button class="filter" data-status="Manutenção">Manutenção</button>
+        <button class="filter" data-status="Parado">Parados</button>
+        <button class="filter" data-status="Reserva">Reserva</button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input type="search" id="busca" placeholder="Buscar motorista, placa, rota…">
+      </label>
+    </div>
+
+    <div class="card table-card">
+      <div class="table-wrap">
+        <table class="table" id="tabela-rotina">
+          <thead>
+            <tr>
+              <th data-key="motorista">Motorista</th>
+              <th data-key="veiculo">Veículo</th>
+              <th data-key="placa">Placa</th>
+              <th data-key="rota">Rota / Região</th>
+              <th data-key="saida_prevista" class="num">Saída prev.</th>
+              <th data-key="saida_real" class="num">Saída real</th>
+              <th data-key="entregas_previstas" class="num">Entregas</th>
+              <th class="num">% concl.</th>
+              <th data-key="coletas_realizadas" class="num">Coletas</th>
+              <th data-key="ocorrencias" class="num">Ocorr.</th>
+              <th data-key="km_rodado" class="num">Km</th>
+              <th data-key="status">Status</th>
+              <th>Observações</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-rotina"></tbody>
+          <tfoot id="tfoot-rotina"></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <div>
+      <img src="assets/logo-colormaq-blue.png" alt="Colormaq" class="footer-logo">
+      <span>COCKPIT DIÁRIO · Área de Trabalho Filial</span>
+    </div>
+    <div class="footer-source" id="footer-source"></div>
+  </footer>
+</main>
+
+<script src="vendor/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
