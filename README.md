@@ -22,6 +22,10 @@ O workflow `.github/workflows/deploy-pages.yml` publica o painel no GitHub Pages
 
 O painel não precisa de backend; os arquivos `index.html`, `styles.css` e `app.js` podem ser servidos por qualquer hospedagem estática. Caso seja a primeira publicação desse repositório, o GitHub poderá pedir que a fonte do Pages seja configurada como **GitHub Actions** em **Settings → Pages**.
 
+## Compartilhar
+
+O endereço público do painel é <https://willianssilva-hash.github.io/-rea-de-Trabalho-Filial/>. Você pode enviar esse link para outras pessoas. Os links adicionados pelo formulário e os favoritos são mantidos no armazenamento local de cada navegador; para que novos itens apareçam para todos, seria necessário conectá-los a um serviço compartilhado.
+
 ## Adicionar outros links
 
 Use **Adicionar repositório** no painel e informe o nome, o endereço e, opcionalmente, uma descrição. O formulário aceita links com ou sem `https://`, valida endereços web e impede duplicatas. Os dados e favoritos ficam salvos no `localStorage` do navegador em uso; portanto, cada navegador/dispositivo mantém sua própria lista. O botão de cada cartão abre o endereço cadastrado em uma nova aba.
