@@ -5,7 +5,24 @@ entregas e coletas da filial, alimentado pelas abas **“Cockpit Diário”** e
 **“Rotina Diária Mot. Frota2”** da planilha *Área de Trabalho Filial*.
 
 > Repositório de publicação: <https://github.com/willianssilva-hash/Cockpit>
-> (branch `arena/01932278-rea-de-trabalho-filial`)
+> Desenvolvimento na branch `arena/01932278-rea-de-trabalho-filial`.
+
+## Publicar no repositório Cockpit
+
+O desenvolvimento acontece na branch `arena/01932278-rea-de-trabalho-filial`
+deste repositório. Para espelhar no `Cockpit` (assim que o token/integração
+tiver permissão de escrita nele, ou a partir da sua máquina):
+
+```bash
+git clone https://github.com/willianssilva-hash/-rea-de-Trabalho-Filial.git cockpit
+cd cockpit
+git checkout arena/01932278-rea-de-trabalho-filial
+git remote add cockpit https://github.com/willianssilva-hash/Cockpit.git
+git push cockpit arena/01932278-rea-de-trabalho-filial:main
+```
+
+(ou publique a própria branch e defina-a como default em *Settings → Branches*;
+o painel funciona igual, basta servir/abrir a pasta `app/`.)
 
 ---
 
