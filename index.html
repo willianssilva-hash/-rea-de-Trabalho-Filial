@@ -3,40 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f7fb" />
+    <meta name="theme-color" content="#eef5fd" />
     <meta
       name="description"
-      content="Uma área de trabalho para reunir e abrir seus repositórios e painéis em um só lugar."
+      content="Área de Trabalho Filial Colormaq: acesse o Painel de Monitoramento e seus demais repositórios em um só lugar."
     />
-    <title>Área de trabalho · Repositórios</title>
+    <title>Área de Trabalho Filial · Colormaq</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Navegação principal">
-        <a class="brand" href="#inicio" aria-label="Área de trabalho, início">
-          <span class="brand-mark" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-          </span>
-          <span class="brand-copy">
-            <strong>workspace</strong>
-            <small>ÁREA DE TRABALHO</small>
-          </span>
+        <a class="brand" href="#inicio" aria-label="Colormaq — Área de Trabalho Filial, início">
+          <img
+            class="brand-logo"
+            src="https://colormaq.vtexassets.com/assets/vtex.file-manager-graphql/images/489e43ad-014d-4513-bf71-06aeca05fa86___0ba9e527781bb1d4317a2897013f8bd1.png"
+            alt="Colormaq"
+            decoding="async"
+          />
+          <span class="brand-copy"><small>ÁREA DE TRABALHO FILIAL</small></span>
         </a>
 
         <div class="workspace-switcher">
-          <span class="workspace-avatar" aria-hidden="true">W</span>
+          <span class="workspace-avatar" aria-hidden="true">CF</span>
           <span class="workspace-copy">
-            <small>ESPAÇO ATUAL</small>
-            <strong>Meu espaço</strong>
+            <small>UNIDADE ATUAL</small>
+            <strong>ÁREA DE TRABALHO FILIAL</strong>
           </span>
           <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
             <path d="m6 8 4 4 4-4" />
           </svg>
         </div>
 
-        <p class="nav-label">ESPAÇO DE TRABALHO</p>
+        <p class="nav-label">ÁREA DE TRABALHO FILIAL</p>
         <nav class="side-nav">
           <a class="nav-item" href="#inicio" aria-label="Visão geral">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
@@ -57,14 +57,14 @@
           <div class="sidebar-tip-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 3.5a6.5 6.5 0 0 0-4.2 11.46c.84.72 1.2 1.5 1.2 2.54h6c0-1.04.36-1.82 1.2-2.54A6.5 6.5 0 0 0 12 3.5Z"/><path d="M9.5 20.5h5M10 17.5h4"/></svg>
           </div>
-          <strong>Seu espaço, do seu jeito</strong>
-          <p>Adicione seus painéis favoritos e tenha tudo a um clique.</p>
+          <strong>Sua filial, do seu jeito</strong>
+          <p>Reúna seus painéis e tenha tudo a um clique.</p>
           <button type="button" class="sidebar-help" id="sidebar-add">Adicionar repositório <span aria-hidden="true">↗</span></button>
         </div>
 
         <div class="sidebar-profile">
-          <div class="profile-avatar" aria-hidden="true">M</div>
-          <div class="profile-copy"><strong>Meu espaço</strong><small>Área pessoal</small></div>
+          <div class="profile-avatar" aria-hidden="true">CF</div>
+          <div class="profile-copy"><strong>Colormaq</strong><small>Unidade filial</small></div>
           <span class="profile-dots" aria-hidden="true">···</span>
         </div>
       </aside>
@@ -72,7 +72,7 @@
       <main class="main-content" id="inicio">
         <header class="topbar">
           <div class="breadcrumbs" aria-label="Localização">
-            <span>Meu espaço</span>
+            <span>Área de Trabalho Filial</span>
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
             <strong>Repositórios</strong>
           </div>
@@ -82,16 +82,16 @@
               <input id="search-input" type="search" placeholder="Buscar repositórios" autocomplete="off" />
               <kbd>/</kbd>
             </label>
-            <button class="avatar-button" type="button" aria-label="Perfil do espaço pessoal">M</button>
+            <button class="avatar-button" type="button" aria-label="Perfil Colormaq">CF</button>
           </div>
         </header>
 
         <div class="page-content" id="repositorios">
           <section class="page-heading" aria-labelledby="page-title">
             <div>
-              <div class="eyebrow"><span class="eyebrow-dot"></span> MEU ESPAÇO DE TRABALHO</div>
-              <h1 id="page-title">Repositórios<span class="heading-period">.</span></h1>
-              <p class="page-subtitle">Seus painéis e projetos, reunidos em um só lugar.</p>
+              <div class="eyebrow"><span class="eyebrow-dot"></span> COLORMAQ · UNIDADE FILIAL</div>
+              <h1 id="page-title">ÁREA DE TRABALHO FILIAL</h1>
+              <p class="page-subtitle">Seus painéis e repositórios da filial, reunidos em um só lugar.</p>
             </div>
             <button class="primary-button" id="add-repo-button" type="button">
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" /></svg>
@@ -110,7 +110,7 @@
               <div class="art-orbit orbit-one"></div>
               <div class="art-orbit orbit-two"></div>
               <div class="art-window">
-                <div class="art-window-top"><i></i><i></i><i></i><span>meu espaço</span></div>
+                <div class="art-window-top"><i></i><i></i><i></i><span>filial · colormaq</span></div>
                 <div class="art-window-body">
                   <div class="art-side-line"></div>
                   <div class="art-main-lines"><b></b><b></b><b></b></div>
@@ -126,10 +126,10 @@
             <div class="section-heading">
               <div>
                 <div class="section-title-row">
-                  <h2 id="repository-title">Meus repositórios</h2>
+                  <h2 id="repository-title">Painéis e repositórios</h2>
                   <span class="section-count" id="repo-count">1</span>
                 </div>
-                <p>Links rápidos para seus projetos e painéis.</p>
+                <p>Acesso direto aos sistemas utilizados pela filial.</p>
               </div>
               <div class="view-controls" aria-label="Filtrar repositórios">
                 <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todos</button>
@@ -144,13 +144,13 @@
             <div class="empty-state" id="empty-state" hidden>
               <div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></div>
               <h3 id="empty-title">Nenhum repositório encontrado</h3>
-              <p id="empty-copy">Tente outro termo ou adicione um novo repositório ao seu espaço.</p>
+              <p id="empty-copy">Tente outro termo ou adicione um repositório à Área de Trabalho Filial.</p>
               <button class="text-button" type="button" id="empty-add-button">Adicionar repositório <span aria-hidden="true">↗</span></button>
             </div>
           </section>
 
           <footer class="page-footer">
-            <span><span class="footer-dot"></span> Seu espaço está pronto para novos projetos</span>
+            <span><span class="footer-dot"></span> Área de Trabalho Filial pronta para novos painéis</span>
             <span>Os repositórios adicionados são salvos neste navegador.</span>
           </footer>
         </div>
@@ -163,9 +163,9 @@
           <div class="dialog-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.75A1.75 1.75 0 0 1 6.75 3H20v15H6.75A1.75 1.75 0 0 0 5 19.75v-15Z"/><path d="M5 19.75A1.75 1.75 0 0 1 6.75 18H20M8.5 7h8M8.5 10.5h8"/></svg></div>
           <button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar janela">×</button>
         </div>
-        <p class="dialog-eyebrow">AMPLIE SEU ESPAÇO</p>
+        <p class="dialog-eyebrow">AMPLIE SUA ÁREA DE TRABALHO</p>
         <h2 id="dialog-title">Adicionar repositório</h2>
-        <p class="dialog-description">Salve um projeto ou painel para acessá-lo rapidamente sempre que precisar.</p>
+        <p class="dialog-description">Salve um projeto ou painel para acessá-lo rapidamente pela Área de Trabalho Filial.</p>
 
         <label class="form-field" for="repo-name">
           <span>Nome <b>*</b></span>

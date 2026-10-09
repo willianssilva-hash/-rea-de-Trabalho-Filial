@@ -5,14 +5,14 @@
   const DEFAULT_REPOSITORIES = [
     {
       id: "monitoramento2",
-      name: "Monitoramento 2",
+      name: "Painel de Monitoramento",
       url: "https://willianssilva-hash.github.io/Monitoramento2/",
-      description: "Acesse diretamente as informações publicadas no painel Monitoramento2.",
+      description: "Acesse diretamente as informações do Painel de Monitoramento da filial.",
       favorite: false,
       builtIn: true,
     },
   ];
-  const TONES = ["blue", "green", "orange"];
+  const TONES = ["blue", "sky", "navy"];
 
   const elements = {
     grid: document.querySelector("#repo-grid"),
@@ -44,7 +44,16 @@
       }
       const parsed = JSON.parse(saved);
       if (!Array.isArray(parsed)) throw new TypeError("Formato de repositórios inválido");
-      return parsed.filter(isValidSavedRepository);
+      return parsed.filter(isValidSavedRepository).map((repository) => {
+        if (repository.id !== "monitoramento2") return repository;
+        return {
+          ...repository,
+          name: DEFAULT_REPOSITORIES[0].name,
+          url: DEFAULT_REPOSITORIES[0].url,
+          description: DEFAULT_REPOSITORIES[0].description,
+          builtIn: true,
+        };
+      });
     } catch (error) {
       console.warn("Não foi possível ler os repositórios salvos.", error);
       return structuredClone(DEFAULT_REPOSITORIES);
@@ -86,10 +95,10 @@
     try {
       const hostname = new URL(urlString).hostname.toLowerCase();
       if (hostname === "github.io" || hostname.endsWith(".github.io")) {
-        return { label: "GitHub Pages", source: "github", tone: "purple" };
+        return { label: "GitHub Pages", source: "github", tone: "blue" };
       }
       if (hostname === "github.com" || hostname.endsWith(".github.com")) {
-        return { label: "GitHub", source: "github", tone: "purple" };
+        return { label: "GitHub", source: "github", tone: "blue" };
       }
       if (hostname === "gitlab.com" || hostname.endsWith(".gitlab.io")) {
         return { label: hostname.endsWith(".gitlab.io") ? "GitLab Pages" : "GitLab", source: "github", tone: "orange" };
@@ -122,11 +131,15 @@
 
   function createCard(repository, index) {
     const platform = getPlatform(repository.url);
-    const tone = repository.id === "monitoramento2" ? "purple" : TONES[index % TONES.length];
+    const tone = repository.id === "monitoramento2" ? "blue" : TONES[index % TONES.length];
     const name = escapeHTML(repository.name);
     const description = escapeHTML(repository.description || "Acesse este projeto diretamente.");
     const href = escapeHTML(repository.url);
     const displayUrl = escapeHTML(getDisplayUrl(repository.url));
+    const accessLabel = repository.id === "monitoramento2" ? "Torre de Controle Monitoramento" : "Abrir repositório";
+    const accessAriaLabel = repository.id === "monitoramento2"
+      ? "Abrir Torre de Controle Monitoramento em uma nova aba"
+      : `Abrir ${name} em uma nova aba`;
     const favoriteLabel = repository.favorite
       ? `Remover ${name} dos favoritos`
       : `Adicionar ${name} aos favoritos`;
@@ -148,10 +161,10 @@
           <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M3.2 10h13.6M10 3c1.8 2 2.7 4.3 2.7 7S11.8 15 10 17c-1.8-2-2.7-4.3-2.7-7S8.2 5 10 3Z"/></svg>
           <span>${displayUrl}</span>
         </div>
-        <div class="repo-card-bottom">
+        <div class="repo-card-bottom${repository.id === "monitoramento2" ? " monitoramento-card-bottom" : ""}">
           <span class="repo-source"><i class="source-dot" data-source="${platform.source}"></i>${escapeHTML(platform.label)}</span>
-          <a class="open-repo-button" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${name} em uma nova aba">
-            Abrir repositório
+          <a class="open-repo-button${repository.id === "monitoramento2" ? " primary-access-button" : ""}" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${accessAriaLabel}">
+            ${accessLabel}
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7"/></svg>
           </a>
         </div>
@@ -179,7 +192,7 @@
       elements.emptyTitle.textContent = "Nenhum repositório encontrado";
       elements.emptyCopy.textContent = query
         ? "Tente buscar por outro nome, descrição ou endereço."
-        : "Adicione um repositório ao seu espaço para começar a organizar seus acessos.";
+        : "Adicione um repositório à Área de Trabalho Filial para organizar seus acessos.";
     }
 
     document.querySelectorAll(".filter-button").forEach((button) => {
@@ -279,7 +292,7 @@
     elements.dialog.close();
     elements.search.value = "";
     setFilter("all");
-    showToast(saved ? `${name} foi adicionado ao seu espaço.` : `${name} foi adicionado, mas não pôde ser salvo neste navegador.`);
+    showToast(saved ? `${name} foi adicionado à Área de Trabalho Filial.` : `${name} foi adicionado, mas não pôde ser salvo neste navegador.`);
   });
 
   elements.url.addEventListener("input", clearUrlError);

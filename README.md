@@ -1,6 +1,6 @@
-# Área de trabalho — Repositórios
+# ÁREA DE TRABALHO FILIAL — Colormaq
 
-Painel estático para reunir links de projetos e painéis publicados. O atalho inicial abre diretamente o Monitoramento2 em uma nova aba:
+Painel estático da Colormaq para reunir links de projetos e painéis publicados, com identidade visual em azul e branco. O botão **Torre de Controle Monitoramento** abre diretamente o Painel de Monitoramento em uma nova aba:
 
 - <https://willianssilva-hash.github.io/Monitoramento2/>
 
