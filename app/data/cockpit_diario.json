@@ -1,216 +1,3907 @@
 {
   "meta": {
     "aba_origem": "Cockpit Diário",
-    "titulo_aba": "COCKPIT RESUMO DIÁRIO GERAL",
+    "titulo_aba": "COCKPIT DIÁRIO FROTA CAPTAÇÃO",
     "data_referencia": "2026-10-09",
-    "atualizado_em": "2026-10-09T17:40:00",
+    "atualizado_em": "2026-10-09T17:44",
+    "datas": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30"
+    ],
     "locais": [
       "FILIAL-BA",
       "MATRIZ-SP"
     ]
   },
-  "resumo": [
+  "veiculos": [
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6301",
       "local": "FILIAL-BA",
-      "categoria": "BITREM FROTA",
-      "status": "Vazio",
-      "quantidade": 4
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Em Viagem"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6317",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Carregado",
-      "quantidade": 3
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6316",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Manutenção",
-      "quantidade": 1
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FGP 9973",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Retorno",
-      "quantidade": 4
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FGP 9F51",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Em Viagem",
-      "quantidade": 3
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6315",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Vazio",
-      "quantidade": 7
+      "status": {
+        "2026-10-01": "Manutenção",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Ag. Desc. Cliente",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FGP 9553",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "Ag. Desc. Cliente",
-      "quantidade": 2
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FGP 9559",
       "local": "FILIAL-BA",
-      "categoria": "CARRETA AGREG.",
-      "status": "MEC",
-      "quantidade": 1
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Em Viagem"
+      }
     },
     {
-      "local": "FILIAL-BA",
-      "categoria": "CVM. FROTA",
-      "status": "Manobra",
-      "quantidade": 1
-    },
-    {
-      "local": "FILIAL-BA",
-      "categoria": "CVM. FROTA",
-      "status": "Manutenção",
-      "quantidade": 1
-    },
-    {
-      "local": "FILIAL-BA",
-      "categoria": "CVM. FROTA",
-      "status": "Ag. Desc. Cliente",
-      "quantidade": 1
-    },
-    {
-      "local": "FILIAL-BA",
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
       "categoria": "TRUCK FLUXO",
-      "status": "Fluxo CD",
-      "quantidade": 13
-    },
-    {
+      "rastr": "SIM",
+      "placa": "FET 9362",
       "local": "FILIAL-BA",
-      "categoria": "TRUCK FROTA",
-      "status": "Carregado",
-      "quantidade": 4
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FET 9C88",
       "local": "FILIAL-BA",
-      "categoria": "TRUCK FROTA",
-      "status": "Em Viagem",
-      "quantidade": 2
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FGP 9F55",
       "local": "FILIAL-BA",
-      "categoria": "TRUCK FROTA",
-      "status": "Vazio",
-      "quantidade": 2
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
     },
     {
-      "local": "MATRIZ-SP",
-      "categoria": "BITREM AGREGADO",
-      "status": "Carregado",
-      "quantidade": 4
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FET 9C87",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
     },
     {
-      "local": "MATRIZ-SP",
-      "categoria": "BITREM AGREGADO",
-      "status": "Manutenção",
-      "quantidade": 2
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "BITREM AGREGADO",
-      "status": "Retorno",
-      "quantidade": 2
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "BITREM AGREGADO",
-      "status": "Em Viagem",
-      "quantidade": 4
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "BITREM AGREGADO",
-      "status": "Ag. Desc. Cliente",
-      "quantidade": 6
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARGA SECA",
-      "status": "Sem contagem",
-      "quantidade": 0
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Sinistro Batida",
-      "quantidade": 1
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Carregado",
-      "quantidade": 18
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Manutenção",
-      "quantidade": 3
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Retorno",
-      "quantidade": 5
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Em Viagem",
-      "quantidade": 4
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Ag. Desc. Cliente",
-      "quantidade": 10
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CARRETA AGREG.",
-      "status": "Inativo",
-      "quantidade": 1
-    },
-    {
-      "local": "MATRIZ-SP",
-      "categoria": "CAVALO TRAÇÃO",
-      "status": "Sem contagem",
-      "quantidade": 0
-    },
-    {
-      "local": "MATRIZ-SP",
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
       "categoria": "CVM. FROTA",
-      "status": "Sem contagem",
-      "quantidade": 0
+      "rastr": "SIM",
+      "placa": "FHT 6821",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Manobra",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Manobra",
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Manobra"
+      }
     },
     {
-      "local": "MATRIZ-SP",
-      "categoria": "PLATAF. (GUINCHO)",
-      "status": "Sem contagem",
-      "quantidade": 0
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6815",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-05": "Manobra",
+        "2026-10-06": "Manobra",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Manobra",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
     },
     {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6816",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Manobra",
+        "2026-10-02": "Manobra",
+        "2026-10-05": "Manutenção",
+        "2026-10-06": "Manobra",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7204",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7197",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7198",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Manutenção",
+        "2026-10-02": "Manutenção",
+        "2026-10-05": "Manutenção",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FJJ 1683",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "RCP 0C42",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "RCP 8E53",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Manutenção",
+        "2026-10-02": "Manutenção",
+        "2026-10-05": "Manutenção",
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "RCP 1E06",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Ag. Desc. Cliente",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "RCP 1E92",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Ag. Desc. Cliente",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "RCP 6I24",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Ag. Desc. Cliente",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TLY 1I96",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Retorno",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TJA 6G12",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TJK 4A15",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Retorno",
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TLJ 6G29",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Retorno",
+        "2026-10-02": "Vazio",
+        "2026-10-05": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TLN 5G68",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Ag. Desc. Cliente",
+        "2026-10-02": "Retorno",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TKU 7D97",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-05": "Retorno",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TIV 0C91",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-05": "Retorno",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2024",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "TIT 0G60",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Ag. Desc. Cliente",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2024",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM FROTA",
+      "rastr": "SIM",
+      "placa": "TJT 4C61",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2024",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM FROTA",
+      "rastr": "SIM",
+      "placa": "TKZ 8E64",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2024",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM FROTA",
+      "rastr": "SIM",
+      "placa": "TLP 5F53",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Carregado",
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2024",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM FROTA",
+      "rastr": "SIM",
+      "placa": "TKA 1A62",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Em Viagem",
+        "2026-10-05": "Carregado",
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FET 9282",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FET 9361",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FGP 9561",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FHT 6312",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FET 9283",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FHT 6303",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FHT 6D24",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FGP 9556",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FLUXO",
+      "rastr": "SIM",
+      "placa": "FGP 9557",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Fluxo CD",
+        "2026-10-02": "Fluxo CD",
+        "2026-10-05": "Fluxo CD",
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "FHT 7C05",
       "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "RANDON",
+      "modelo": "CARRETA",
+      "ano": "1991",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "BFP 1A94",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "1991",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "BFP 1B84",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Inativo",
+        "2026-10-07": "Inativo",
+        "2026-10-08": "Inativo",
+        "2026-10-09": "Inativo"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "ESP 5296",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "BZG 6638",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "RANDON",
+      "modelo": "CARRETA",
+      "ano": "1996",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "CDY 1D94",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "RANDON",
+      "modelo": "CARRETA",
+      "ano": "1996",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "CDY 1E08",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "RANDON",
+      "modelo": "CARRETA",
+      "ano": "1996",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "CDY 1H04",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GGE 1C22",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GBX 5E63",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "",
+      "modelo": "VW 35.300",
+      "ano": "1995",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "NÃO",
+      "placa": "CDY 1642",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Manobra",
+        "2026-10-02": "Manobra",
+        "2026-10-05": "Manobra",
+        "2026-10-06": "Manobra",
+        "2026-10-07": "Manobra",
+        "2026-10-08": "Manobra"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GAC 8F24",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GFQ 0E24",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "EOA 9845",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GIL 6G95",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "BYW 6726",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "CDR 4436",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "FZQ 5486",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GAK 8D26",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GCE 7706",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "DCU 1467",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "ELQ 9227",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "EZZ 8197",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GFX 7C17",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "EWT 1968",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Retorno",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "GJJ 0J28",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2019",
+      "tp_veiculo": "BI-TREM",
+      "categoria": "BITREM AGREGADO",
+      "rastr": "SIM",
+      "placa": "EOC 7969",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-02": "Carregado",
+        "2026-10-05": "Retorno",
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
       "categoria": "TRUCK FROTA",
-      "status": "Sem contagem",
-      "quantidade": 0
+      "rastr": "SIM",
+      "placa": "FHT 6C91",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 24.250",
+      "ano": "2010",
+      "tp_veiculo": "TRUCK",
+      "categoria": "CARGA SECA",
+      "rastr": "SIM",
+      "placa": "EPF 9G74",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6I14",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Manobra",
+        "2026-10-02": "Manobra",
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manobra",
+        "2026-10-08": "Manobra"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6D13",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Manutenção",
+        "2026-10-02": "Manutenção",
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6C94",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FET 9C84",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FET 9C85",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6D05",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FGP 9F58",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 24-250",
+      "ano": "2010",
+      "tp_veiculo": "TRUCK",
+      "categoria": "CARGA SECA",
+      "rastr": "SIM",
+      "placa": "EPF 9G75",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Carregado",
+        "2026-10-02": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "DMN 6675",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "EBC 2569",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "EGG 6624",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "EGI 1447",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "RANDON",
+      "modelo": "CARRETA",
+      "ano": "1997",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "BXG 0752",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Fluxo CD",
+        "2026-10-07": "Fluxo CD",
+        "2026-10-08": "Fluxo CD",
+        "2026-10-09": "Fluxo CD"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "EOD 4358",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "ESL 5197",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GHQ 2F43",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "EXO 7993",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FEI 6J55",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7B96",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7B99",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7C01",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GFV 8G94",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7C02",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FHT 7C03",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GFH 3G95",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2013",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FJJ 1G82",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FKP 2C88",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FMT 3J53",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "FRJ 8G66",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GAT 3I77",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GCK 1I87",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Retorno",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "MEC",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GCL 6C48",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "NÃO",
+      "placa": "GFU 0E67",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-01": "Ag. Desc. Cliente",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Ag. Desc. Cliente",
+        "2026-10-08": "MEC",
+        "2026-10-09": "MEC"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6D18",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Em Viagem",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "VW 19.390",
+      "ano": "2012",
+      "tp_veiculo": "CAVALO",
+      "categoria": "CVM. FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6298",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Manobra",
+        "2026-10-02": "Manobra",
+        "2026-10-06": "Manobra",
+        "2026-10-07": "Manobra",
+        "2026-10-08": "Manobra"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GGM 1I76",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "MEC",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GGS 2H25",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GIW 4A32",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Ag. Desc. Cliente",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GIW 7A98",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Retorno",
+        "2026-10-09": "Retorno"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GIX 9G35",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Em Viagem"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "CARRETA",
+      "ano": "2019",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GJI 9145",
+      "local": "FILIAL-BA",
+      "status": {
+        "2026-10-02": "Carregado",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Retorno",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "PALMEIRA",
+      "modelo": "SEMI REBOQUE",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "SIM",
+      "placa": "GKA 0J83",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Sinistro Batida",
+        "2026-10-07": "Sinistro Batida",
+        "2026-10-08": "Sinistro Batida",
+        "2026-10-09": "Sinistro Batida"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "QSP 3J30",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Manutenção",
+        "2026-10-07": "Manutenção",
+        "2026-10-08": "Manutenção",
+        "2026-10-09": "Manutenção"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "QSQ 1I04",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "QSU 3A46",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Retorno",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "QSX 5D92",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Carregado",
+        "2026-10-09": "Carregado"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "QSY 7C28",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Ag. Desc. Cliente",
+        "2026-10-06": "Ag. Desc. Cliente",
+        "2026-10-07": "Carregado",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "UDN 1H38",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Retorno",
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2025",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "",
+      "placa": "TLD 8E23",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-06": "Carregado",
+        "2026-10-07": "Em Viagem",
+        "2026-10-08": "Em Viagem",
+        "2026-10-09": "Ag. Desc. Cliente"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "MBL 1218",
+      "ano": "1997",
+      "tp_veiculo": "CAMINHÃO PLAT.",
+      "categoria": "PLATAF. (GUINCHO)",
+      "rastr": "SIM",
+      "placa": "CDY 4F13",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "VW",
+      "modelo": "DELIVERY 9.180",
+      "ano": "2023",
+      "tp_veiculo": "CAMINHÃO PLAT.",
+      "categoria": "PLATAF. (GUINCHO)",
+      "rastr": "SIM",
+      "placa": "SFZ 8B05",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Vazio",
+        "2026-10-02": "Vazio",
+        "2026-10-05": "Vazio",
+        "2026-10-06": "Vazio",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Vazio"
+      }
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "COLINA",
+      "modelo": "COLINA CS",
+      "ano": "2012",
+      "tp_veiculo": "REB. - CARRETINHA",
+      "categoria": "CAVALO TRAÇÃO",
+      "rastr": "NÃO",
+      "placa": "FFR 4021",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "ATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FET 9C86",
+      "local": "MATRIZ-SP",
+      "status": {
+        "2026-10-01": "Em Viagem",
+        "2026-10-02": "Vazio",
+        "2026-10-05": "Em Viagem",
+        "2026-10-06": "Em Viagem",
+        "2026-10-07": "Vazio",
+        "2026-10-08": "Carregado"
+      }
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "SIM",
+      "placa": "FHT 6C96",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6321",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FET 9C81",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6D11",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FGP 9F62",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6322",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "1991",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "NÃO",
+      "placa": "BFP 1B92",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6C93",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FET 9363",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6323",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FET 9D64",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FGP 9J74",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6D04",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6D14",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "FORD",
+      "modelo": "CARGO-2428",
+      "ano": "2008",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "EDQ 1785",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6C95",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "GALEGO",
+      "modelo": "CARRETA",
+      "ano": "1992",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "NÃO",
+      "placa": "BFP 7178",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "INATIVO",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK INAT",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FGP 9F49",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "Roubado",
+      "marca": "M.BENZ",
+      "modelo": "ATEGO 24.26",
+      "ano": "2012",
+      "tp_veiculo": "TRUCK",
+      "categoria": "TRUCK FROTA",
+      "rastr": "NÃO",
+      "placa": "FHT 6C92",
+      "local": "MATRIZ-SP",
+      "status": {}
+    },
+    {
+      "situacao": "Roubado",
+      "marca": "FACCHINI",
+      "modelo": "CARRETA",
+      "ano": "2020",
+      "tp_veiculo": "CARRETA",
+      "categoria": "CARRETA AGREG.",
+      "rastr": "NÃO",
+      "placa": "GCL 1G77",
+      "local": "MATRIZ-SP",
+      "status": {}
     }
   ],
+  "resumo_por_data": {
+    "2026-10-01": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 6
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 5
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      }
+    ],
+    "2026-10-02": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 5
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Em Viagem",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      }
+    ],
+    "2026-10-05": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 5
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      }
+    ],
+    "2026-10-06": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 8
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 7
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 7
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Inativo",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 18
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Carregado",
+        "quantidade": 8
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Em Viagem",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 8
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "MEC",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Sinistro Batida",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      }
+    ],
+    "2026-10-07": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 5
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 9
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 13
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Inativo",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 10
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Em Viagem",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Carregado",
+        "quantidade": 8
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Sinistro Batida",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      }
+    ],
+    "2026-10-08": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Retorno",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 5
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 6
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 6
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 5
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 10
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Inativo",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 9
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Em Viagem",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Carregado",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Manutenção",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARGA SECA",
+        "status": "Em Viagem",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 5
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 7
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "MEC",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "MEC",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CVM. FROTA",
+        "status": "Vazio",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Sinistro Batida",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "PLATAF. (GUINCHO)",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 1
+      }
+    ],
+    "2026-10-09": [
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Em Viagem",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Vazio",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FROTA",
+        "status": "Carregado",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "TRUCK FLUXO",
+        "status": "Fluxo CD",
+        "quantidade": 13
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manobra",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CVM. FROTA",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Vazio",
+        "quantidade": 7
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 2
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 1
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 3
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "BITREM FROTA",
+        "status": "Vazio",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Retorno",
+        "quantidade": 5
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Carregado",
+        "quantidade": 18
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Inativo",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 10
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Manutenção",
+        "quantidade": 3
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Ag. Desc. Cliente",
+        "quantidade": 6
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Retorno",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Carregado",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Manutenção",
+        "quantidade": 2
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "BITREM AGREGADO",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Em Viagem",
+        "quantidade": 4
+      },
+      {
+        "local": "FILIAL-BA",
+        "categoria": "CARRETA AGREG.",
+        "status": "MEC",
+        "quantidade": 1
+      },
+      {
+        "local": "MATRIZ-SP",
+        "categoria": "CARRETA AGREG.",
+        "status": "Sinistro Batida",
+        "quantidade": 1
+      }
+    ],
+    "2026-10-13": [],
+    "2026-10-14": [],
+    "2026-10-15": [],
+    "2026-10-16": [],
+    "2026-10-19": [],
+    "2026-10-20": [],
+    "2026-10-21": [],
+    "2026-10-22": [],
+    "2026-10-23": [],
+    "2026-10-26": [],
+    "2026-10-27": [],
+    "2026-10-28": [],
+    "2026-10-29": [],
+    "2026-10-30": []
+  },
   "fonte": {
-    "planilha": "Área de Trabalho Filial (Google Sheets)",
+    "planilha": "Área de Trabalho Filial (Google Sheets · publicação web)",
     "abas": [
       "Cockpit Diário",
       "Rotina Diária Mot. Frota2"
     ],
     "demo": false,
-    "capturas": true,
-    "nota": "Valores transcritos das capturas de tela da planilha (contagem de 09/10). Com a planilha pública, scripts/import_spreadsheet.py atualiza automaticamente."
+    "capturas": false,
+    "nota": "Importado da planilha pública em 09/10/2026 17:44 (matriz veículo × data). Motoristas: captura de tela de 09/10."
   }
 }

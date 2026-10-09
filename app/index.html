@@ -23,7 +23,10 @@
     <div class="topbar-meta">
       <span class="chip chip-light" id="chip-data">—</span>
       <span class="chip chip-light" id="chip-total">—</span>
-      <span class="chip chip-light" id="chip-atualizacao" title="Horário da contagem">—</span>
+      <label class="chip chip-light chip-select">📅
+        <select id="sel-data" title="Data da contagem"></select>
+      </label>
+      <span class="chip chip-light" id="chip-atualizacao" title="Horário da carga">—</span>
       <button class="btn-refresh" id="btn-atualizar" title="Recarregar dados da planilha">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M17.65 6.35A7.96 7.96 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
         Atualizar
@@ -52,6 +55,14 @@
     </div>
 
     <div class="grid grid-3">
+      <article class="card span-3">
+        <header class="card-head">
+          <h3>Evolução diária da frota por status <small>(todos os dias captados)</small></h3>
+          <span class="card-tag" id="tag-evol"></span>
+        </header>
+        <div class="chart-box"><canvas id="chart-evol"></canvas></div>
+      </article>
+
       <article class="card span-2">
         <header class="card-head">
           <h3>Status da frota por local <small>(veículos)</small></h3>
@@ -88,6 +99,43 @@
     </div>
     <div class="insight-summary" id="insight-summary"></div>
     <div class="insight-grid" id="insight-grid"></div>
+  </section>
+
+  <!-- ===================== FROTA DETALHADA ===================== -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Frota detalhada por veículo</h2>
+      <span class="section-sub">Cadastro e status do dia selecionado · aba “Cockpit Diário”</span>
+    </div>
+    <div class="table-tools">
+      <div class="filters" id="filters-frota">
+        <button class="filter is-active" data-local="todos">Todos</button>
+        <button class="filter" data-local="FILIAL-BA">FILIAL-BA</button>
+        <button class="filter" data-local="MATRIZ-SP">MATRIZ-SP</button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input type="search" id="busca-frota" placeholder="Buscar placa, modelo, categoria…">
+      </label>
+    </div>
+    <div class="card table-card">
+      <div class="table-wrap">
+        <table class="table" id="tabela-frota">
+          <thead>
+            <tr>
+              <th data-fkey="placa">Placa</th>
+              <th data-fkey="marca">Marca / modelo</th>
+              <th data-fkey="tp_veiculo">Tipo</th>
+              <th data-fkey="categoria">Categoria</th>
+              <th data-fkey="local">Local</th>
+              <th data-fkey="situacao">Situação</th>
+              <th>Status do dia</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-frota"></tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <!-- ================== RESUMO DIÁRIO GERAL ================== -->

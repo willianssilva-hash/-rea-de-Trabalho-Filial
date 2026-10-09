@@ -21,10 +21,14 @@ aguardando descarga no cliente, vazios/reposição, indisponíveis
 (manutenção + MEC + sinistro + inativo), fluxo CD/manobra e motoristas acompanhados.
 
 **Visualizações**
-1. Status da frota por local (barras empilhadas FILIAL-BA × MATRIZ-SP)
-2. Distribuição geral da frota por grupo de status (rosca com total ao centro)
-3. Categorias de veículo × status (bitrem, carreta agreg., CVM, truck, plataformas…)
-4. Motoristas por status (rosca)
+1. Evolução diária da frota por status (todos os dias captados na planilha)
+2. Status da frota por local (barras empilhadas FILIAL-BA × MATRIZ-SP)
+3. Distribuição geral da frota por grupo de status (rosca com total ao centro)
+4. Categorias de veículo × status (bitrem, carreta agreg., CVM, truck, plataformas…)
+5. Motoristas por status (rosca)
+
+**Seletor de data** no topo: todos os KPIs, gráficos, insights e a tabela-árvore
+recalculam para o dia escolhido, com comparação D-1 nos cartões.
 
 **Insights & destaques** — leitura automática da contagem:
 fila de descarga no cliente, indisponíveis de oficina/sinistro, bolsa de vazios
@@ -34,6 +38,8 @@ motoristas sem status e concentração da frota.
 **Tabelas fiéis à planilha**
 - *Cockpit Resumo Diário Geral*: estrutura em tópicos local → categoria → status,
   com pontos coloridos por status, totais por categoria, por local e total geral;
+- *Frota detalhada por veículo*: placa, marca/modelo, tipo, categoria, local,
+  situação e status do dia (147 veículos), com filtros, busca e ordenação;
 - *Acompanhamento Diário Frota*: motoristas agrupados por local CD, com filtros,
   busca, ordenação e totais por grupo.
 
@@ -50,25 +56,24 @@ python3 -m http.server 8080 --bind 0.0.0.0
 
 ## Conectando a planilha real
 
-Os JSONs em `app/data/` seguem o esquema das abas. Hoje eles carregam a contagem
-de **09/10 transcrita das capturas de tela**; com a planilha pública
-(*Compartilhar → qualquer pessoa com o link*), atualize com:
+A planilha já está **publicada na web**, e o painel hoje roda com a matriz
+veículo × data baixada dela (contagens validadas: 09/10 = FILIAL-BA 49 ·
+MATRIZ-SP 60 · total 109, idêntico ao resumo oficial).
+
+Fluxo de atualização:
 
 ```bash
-python3 scripts/import_spreadsheet.py --sheet-id 1McDH0IhIa3LyvJ_QIkTlTZjUf90SLRGQlabdZXuDyIM \
-        --gid-cockpit 1951800208 --gid-rotina 1316334574 --data-referencia 2026-10-09
+# 1. baixe o HTML publicado da aba "Cockpit Diário" (matriz veículo × data)
+#    e salve os chunks em data/raw/cockpit_NN.md
+# 2. converta para os JSONs do painel:
+python3 scripts/import_pubhtml.py
 ```
 
-ou exporte as abas em CSV (Arquivo → Baixar → CSV):
-
-```bash
-python3 scripts/import_spreadsheet.py --cockpit "Cockpit Diario.csv" --rotina "Rotina.csv"
-```
-
-O importador entende o layout em tópicos das abas (ignora linhas de total,
-remove sufixos “(F)/(M)” dos status) e recalcula todos os totais.
-Para regenerar o conjunto transcrito das capturas:
-`python3 scripts/build_dados_capturas.py`.
+Para importar a partir de CSVs exportados (Arquivo → Baixar → CSV),
+use `scripts/import_spreadsheet.py --cockpit ... --rotina ...`
+(entende o layout em tópicos, ignora linhas de total e remove sufixos
+“(F)/(M)”); `scripts/build_dados_capturas.py` regenera o conjunto
+transcrito das capturas de tela (motoristas de 09/10).
 
 ## Publicar no repositório Cockpit
 
@@ -97,9 +102,11 @@ app/
   vendor/chart.umd.min.js  Chart.js 4.5.1 (empacotado)
   assets/               logo Colormaq (azul, branca e oficial)
   data/                 cockpit_diario.json + rotina_diaria.json
+data/raw/             raw publicado da aba "Cockpit Diário" (chunks .md)
 scripts/
-  import_spreadsheet.py CSV/Sheets -> app/data (layout em tópicos das abas)
-  build_dados_capturas.py  contagem de 09/10 transcrita das capturas
+  import_pubhtml.py     raw (matriz veículo × data) -> app/data/cockpit_diario.json
+  import_spreadsheet.py CSVs exportados -> app/data (layout em tópicos das abas)
+  build_dados_capturas.py  contagem/motoristas de 09/10 transcritos das capturas
 ```
 
 ## Identidade visual

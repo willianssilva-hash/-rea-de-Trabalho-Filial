@@ -51,6 +51,8 @@ body{
 }
 .brand-text p{margin:2px 0 0;font-size:12px;letter-spacing:.05em;color:var(--azul-100);opacity:.92}
 .topbar-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip-select select{background:transparent;border:0;color:#fff;font:600 12px/1 "Segoe UI",system-ui,sans-serif;outline:0;cursor:pointer}
+.chip-select select option{color:#12263F}
 .chip{
   display:inline-flex;align-items:center;gap:6px;
   padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;
@@ -103,6 +105,7 @@ body{
 .grid{display:grid;gap:14px}
 .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .span-2{grid-column:span 2}
+.span-3{grid-column:span 3}
 .card{
   background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio);
   box-shadow:var(--sombra);padding:16px 18px;
@@ -221,6 +224,7 @@ body{
   .insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:820px){
+  .span-3{grid-column:span 1}
   .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid-3{grid-template-columns:1fr}
   .span-2{grid-column:span 1}

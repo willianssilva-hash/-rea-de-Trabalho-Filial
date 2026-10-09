@@ -1,0 +1,28 @@
+D92 | MATRIZ-SP |  |  |  | 🟣 Ag. Desc. Cliente (M) | 🔵 Carregado (M) | 🔵 Carregado (M) | 🔵 Carregado (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | FACCHINI | CARRETA | 2025 | CARRETA | CARRETA AGREG. |  | QSY 7C28 | MATRIZ-SP | 🟡 Em Viagem (F) | 🟣 Ag. Desc. Cliente (F) |  | 🟣 Ag. Desc. Cliente (F) | 🔵 Carregado (M) | 🟡 Em Viagem (M) | 🟣 Ag. Desc. Cliente (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | FACCHINI | CARRETA | 2025 | CARRETA | CARRETA AGREG. |  | UDN 1H38 | MATRIZ-SP | 🟠 Retorno (F) |  |  | 🔵 Carregado (M) | 🟢 Vazio (M) | 🟡 Em Viagem (M) | 🟣 Ag. Desc. Cliente (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | FACCHINI | CARRETA | 2025 | CARRETA | CARRETA AGREG. |  | TLD 8E23 | MATRIZ-SP |  |  |  | 🔵 Carregado (M) | 🟡 Em Viagem (M) | 🟡 Em Viagem (M) | 🟣 Ag. Desc. Cliente (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | M.BENZ | MBL 1218 | 1997 | CAMINHÃO PLAT. | PLATAF. (GUINCHO) | SIM | CDY 4F13 | MATRIZ-SP | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | VW | DELIVERY 9.180 | 2023 | CAMINHÃO PLAT. | PLATAF. (GUINCHO) | SIM | SFZ 8B05 | MATRIZ-SP | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) | 🟢 Vazio (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | COLINA | COLINA CS | 2012 | REB. - CARRETINHA | CAVALO TRAÇÃO | NÃO | FFR 4021 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🟢 ATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK | TRUCK FROTA | NÃO | FET 9C86 | MATRIZ-SP | 🟡 Em Viagem (M) | 🟢 Vazio (M) | 🟡 Em Viagem (M) | 🟡 Em Viagem (M) | 🟢 Vazio (M) | 🔵 Carregado (M) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK | TRUCK FROTA | SIM | FHT 6C96 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6321 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FET 9C81 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6D11 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FGP 9F62 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6322 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | FACCHINI | CARRETA | 1991 | CARRETA | CARRETA AGREG. | NÃO | BFP 1B92 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6C93 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FET 9363 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6323 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FET 9D64 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FGP 9J74 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6D04 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6D14 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | FORD | CARGO-2428 | 2008 | TRUCK INAT | TRUCK FROTA | NÃO | EDQ 1785 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FHT 6C95 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | GALEGO | CARRETA | 1992 | CARRETA | CARRETA AGREG. | NÃO | BFP 7178 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 🔴 INATIVO | M.BENZ | ATEGO 24.26 | 2012 | TRUCK INAT | TRUCK FROTA | NÃO | FGP 9F49 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| ❌ Roubado | M.BENZ | ATEGO 24.26 | 2012 | TRUCK | TRUCK FROTA | NÃO | FHT 6C92 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| ❌ Roubado | FACCHINI | CARRETA | 2020 | CARRETA | CARRETA AGREG. | NÃO | GCL 1G77 | MATRIZ-SP |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
