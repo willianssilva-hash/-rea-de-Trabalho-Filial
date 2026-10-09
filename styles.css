@@ -304,7 +304,7 @@ h1 { margin: 0; color: #1e2a3a; font-size: clamp(30px, 2.7vw, 37px); font-weight
 .open-repo-button { min-height: 29px; padding: 0 9px; display: inline-flex; align-items: center; gap: 6px; color: #185f9f; background: #eff7ff; border: 1px solid #dbeaf8; border-radius: 6px; text-decoration: none; font-size: 10px; font-weight: 680; white-space: nowrap; transition: color .15s ease, background .15s ease, border .15s ease; }
 .open-repo-button:hover { color: #fff; background: #176cc1; border-color: #176cc1; }
 .open-repo-button svg { width: 12px; height: 12px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.monitoramento-card-bottom .repo-source { display: none; }
+.repo-access-bottom .repo-source { display: none; }
 .open-repo-button.primary-access-button {
   width: 100%;
   min-height: 39px;
@@ -320,7 +320,9 @@ h1 { margin: 0; color: #1e2a3a; font-size: clamp(30px, 2.7vw, 37px); font-weight
   white-space: normal;
 }
 .open-repo-button.primary-access-button:hover { background: linear-gradient(110deg, #10579d, #176cc1); border-color: #10579d; box-shadow: 0 6px 14px rgba(20,92,164,.25); }
-.open-repo-button.primary-access-button svg { width: 14px; height: 14px; }
+.open-repo-button.primary-access-button .access-context-icon { width: 18px; height: 18px; flex: 0 0 auto; stroke-width: 1.75; }
+.open-repo-button.primary-access-button .external-link-icon { width: 14px; height: 14px; flex: 0 0 auto; }
+.access-button-label { min-width: 0; overflow-wrap: anywhere; text-align: center; }
 
 .empty-state { min-height: 220px; padding: 34px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px dashed #dfe4ed; border-radius: 11px; background: rgba(255,255,255,.62); }
 .empty-state[hidden] { display: none; }

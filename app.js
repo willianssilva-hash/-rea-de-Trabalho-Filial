@@ -129,6 +129,32 @@
     return '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.1 2.3 3.1 5.1 3.1 8.5s-1 6.2-3.1 8.5c-2.1-2.3-3.1-5.1-3.1-8.5s1-6.2 3.1-8.5Z"/></svg>';
   }
 
+  function iconForAccessButton(name) {
+    const normalizedName = String(name)
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase("pt-BR");
+
+    const icons = [
+      [/estoque|inventario|almoxarifado|armazem|produto/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4.4 7.6 7.6 4.3 7.6-4.3M12 12v9m-4.5-15.5 9 5"/></svg>'],
+      [/venda|comercial|cliente|crm|pedido/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16M6 16V9m4 7V5m4 11v-4m4 4V7"/><path d="m5 7 5-3 4 4 5-3"/></svg>'],
+      [/financ|contab|fatur|pagamento|recebimento|custo|orcamento|caixa/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5c-.7-.8-1.7-1.2-3.2-1.2-1.7 0-2.8.8-2.8 2s1.1 1.8 2.8 2.1 2.8.9 2.8 2.2-1.2 2.2-3.1 2.2c-1.5 0-2.7-.5-3.5-1.4M12 5.5v13"/></svg>'],
+      [/recursos humanos|equipe|colaborador|funcionario|pessoa|(^|[^a-z])rh([^a-z]|$)/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19v-1.2A4.8 4.8 0 0 1 8.3 13h1.4a4.8 4.8 0 0 1 4.8 4.8V19M16 5.2a3.2 3.2 0 0 1 0 6.2M16.7 13h.8a3.8 3.8 0 0 1 3.8 3.8V19"/></svg>'],
+      [/logist|transporte|entrega|frete|rota/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>'],
+      [/produc|fabrica|operacao|industrial/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9l6 3V8l6 4V5h6v15H3Z"/><path d="M7 16h2m3 0h2m3 0h2M17 8h1"/></svg>'],
+      [/qualidade|auditoria|compliance|seguranca/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5.5c0 4.3-3 7.5-8 9.5-5-2-8-5.2-8-9.5V6l8-3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>'],
+      [/relatorio|indicador|analitico|analytics|dados|(^|[^a-z])bi([^a-z]|$)/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16M6 16V9m4 7V5m4 11v-4m4 4V7"/></svg>'],
+      [/codigo|desenvolvimento|repositorio|(^|[^a-z])git([^a-z]|$)|(^|[^a-z])dev([^a-z]|$)/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14"/></svg>'],
+      [/monitor|controle|torre/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4M6 13l3-3 2.5 2.5L17 7"/></svg>'],
+      [/painel|dashboard|portal|sistema/, '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>'],
+    ];
+
+    const matchingIcon = icons.find(([pattern]) => pattern.test(normalizedName));
+    return matchingIcon
+      ? matchingIcon[1]
+      : '<svg class="access-context-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>';
+  }
+
   function createCard(repository, index) {
     const platform = getPlatform(repository.url);
     const tone = repository.id === "monitoramento2" ? "blue" : TONES[index % TONES.length];
@@ -136,7 +162,8 @@
     const description = escapeHTML(repository.description || "Acesse este projeto diretamente.");
     const href = escapeHTML(repository.url);
     const displayUrl = escapeHTML(getDisplayUrl(repository.url));
-    const accessLabel = repository.id === "monitoramento2" ? "Torre de Controle Monitoramento" : "Abrir repositório";
+    const accessLabel = repository.id === "monitoramento2" ? "Torre de Controle Monitoramento" : name;
+    const accessIcon = iconForAccessButton(repository.name);
     const accessAriaLabel = repository.id === "monitoramento2"
       ? "Abrir Torre de Controle Monitoramento em uma nova aba"
       : `Abrir ${name} em uma nova aba`;
@@ -161,11 +188,12 @@
           <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M3.2 10h13.6M10 3c1.8 2 2.7 4.3 2.7 7S11.8 15 10 17c-1.8-2-2.7-4.3-2.7-7S8.2 5 10 3Z"/></svg>
           <span>${displayUrl}</span>
         </div>
-        <div class="repo-card-bottom${repository.id === "monitoramento2" ? " monitoramento-card-bottom" : ""}">
+        <div class="repo-card-bottom repo-access-bottom">
           <span class="repo-source"><i class="source-dot" data-source="${platform.source}"></i>${escapeHTML(platform.label)}</span>
-          <a class="open-repo-button${repository.id === "monitoramento2" ? " primary-access-button" : ""}" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${accessAriaLabel}">
-            ${accessLabel}
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7"/></svg>
+          <a class="open-repo-button primary-access-button" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${accessAriaLabel}">
+            ${accessIcon}
+            <span class="access-button-label">${accessLabel}</span>
+            <svg class="external-link-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v3.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7"/></svg>
           </a>
         </div>
       </article>`;
